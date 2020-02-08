@@ -7,6 +7,7 @@ import { ConnectLayoutComponent } from './connect-layout/connect-layout.componen
 import { CompanyConnectLayoutComponent } from './connect-layout/company-connect-layout/company-connect-layout.component';
 import { InternConnectLayoutComponent } from './connect-layout/intern-connect-layout/intern-connect-layout.component';
 import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.component';
+import { SelfResolver } from 'src/app/core/resolvers/self/self.resolver';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,6 @@ import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.com
     ],
     exports: [
     ],
-    providers: []
+    providers: [SelfResolver]
 })
 export class LayoutsModule { }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connect-layout',
@@ -8,13 +6,8 @@ import { Router } from '@angular/router';
 })
 export class ConnectLayoutComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  login(): void {
-    this.authService.login();
-    this.router.navigate(['']);
   }
 }

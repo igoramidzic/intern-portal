@@ -1,9 +1,10 @@
-<p>Company Connect Layout</p>
-
-<p>
-  <a [routerLink]="[ './signup']">Connect -> Company -> signup</a>
-</p>
-<p>
-  <a [routerLink]="[ '/login']">Connect -> Company -> login</a>
-</p>
-<router-outlet></router-outlet>
+<div class="row no-gutters" style="height: 100vh;">
+  <div class="theme-light main-bg col-md-24 d-flex">
+    <div class="d-flex align-items-center justify-content-center" style="width: 100%;">
+      <div style="max-width: 400px; width: 100%;">
+        <h3 class="mb-4 hint">Company Connect</h3>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

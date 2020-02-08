@@ -1,12 +1,4 @@
-<p>Connect Layout</p>
-
-<p>
-  <a [routerLink]="[ '/connect/company']">Connect -> Company</a>
-</p>
-<p>
-  <a [routerLink]="[ '/connect/intern']">Connect -> Intern</a>
-</p>
-
+<div style="position: absolute; z-index: 1;">
+  <app-connect-navbar></app-connect-navbar>
+</div>
 <router-outlet></router-outlet>
-
-<button (click)="login()">Login</button>

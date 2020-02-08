@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import path from 'path'
 import './db/mongoose'
 import { ENVIRONMENT } from "./util/secrets";
+import jwtParsing from './config/jwt';
 
 // Create Express server
 const app = express()
@@ -13,11 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './../clients/web/dist')));
 
-const asyncHandler = (fn: any) => (req: Request, res: Response, next: any) => {
-  return Promise
-    .resolve(fn(req, res, next))
-    .catch(next);
-};
+app.use(jwtParsing)
 
 // API routes
 app.use('/api', require('./api/controllers/index'))

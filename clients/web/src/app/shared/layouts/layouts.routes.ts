@@ -9,11 +9,14 @@ import { CompanySignupComponent } from '../components/connect/company/company-si
 import { CompanyLoginComponent } from '../components/connect/company/company-login/company-login.component';
 import { InternLoginComponent } from '../components/connect/intern/intern-login/intern-login.component';
 import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.component';
+import { SelfResolver } from 'src/app/core/resolvers/self/self.resolver';
+import { ConnectMainMenuComponent } from '../components/connect/connect-main-menu/connect-main-menu.component';
 
 export const LAYOUTS_ROUTES: Routes = [
     {
         path: '',
         canActivate: [AuthGuard],
+        resolve: [SelfResolver],
         component: MainLayoutComponent,
         loadChildren: '../../pages/pages.module#PagesModule'
     },
@@ -22,6 +25,11 @@ export const LAYOUTS_ROUTES: Routes = [
         canActivate: [NotAuthGuard],
         component: ConnectLayoutComponent,
         children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                component: ConnectMainMenuComponent
+            },
             {
                 path: 'company',
                 component: CompanyConnectLayoutComponent,
