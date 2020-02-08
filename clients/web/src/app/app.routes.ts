@@ -4,6 +4,6 @@ import { AppComponent } from './app.component';
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    component: AppComponent
+    loadChildren: './shared/layouts/layouts.module#LayoutsModule'
   }
 ]
