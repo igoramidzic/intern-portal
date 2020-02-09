@@ -42,12 +42,7 @@
   border-radius: 2px;
 }
 
-.theme-open .dropdown-menu {
-  -webkit-box-shadow: var(--box-shadow);
-  box-shadow: var(--box-shadow);
-}
-
-.theme-closed .dropdown-menu {
+.dropdown-menu {
   -webkit-box-shadow: var(--box-shadow);
   box-shadow: var(--box-shadow);
 }

@@ -6,8 +6,14 @@ export type User = {
     lastName?: string;
     email?: string;
     password?: string;
-    userType?: string;
+    userType?: UserType;
     company?: Company;
     createdAt?: Date;
     updatedAt?: Date;
+}
+
+export enum UserType {
+    Admin = 'admin',
+    Manager = 'manager',
+    Intern = 'intern'
 }

@@ -9,14 +9,13 @@ import { CompanySignupComponent } from '../components/connect/company/company-si
 import { CompanyLoginComponent } from '../components/connect/company/company-login/company-login.component';
 import { InternLoginComponent } from '../components/connect/intern/intern-login/intern-login.component';
 import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.component';
-import { SelfResolver } from 'src/app/core/resolvers/self/self.resolver';
 import { ConnectMainMenuComponent } from '../components/connect/connect-main-menu/connect-main-menu.component';
+import { SelfGuard } from 'src/app/core/guards/self/self.guard';
 
 export const LAYOUTS_ROUTES: Routes = [
     {
         path: '',
-        canActivate: [AuthGuard],
-        resolve: [SelfResolver],
+        canActivate: [AuthGuard, SelfGuard],
         component: MainLayoutComponent,
         loadChildren: '../../pages/pages.module#PagesModule'
     },

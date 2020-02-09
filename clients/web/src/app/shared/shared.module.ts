@@ -10,6 +10,8 @@ import { CompanyLoginComponent } from './components/connect/company/company-logi
 import { ConnectMainMenuComponent } from './components/connect/connect-main-menu/connect-main-menu.component';
 import { ConnectNavbarComponent } from './components/navbars/connect-navbar/connect-navbar.component';
 import { MainErrorAlertComponent } from './components/alerts/main-error-alert/main-error-alert.component';
+import { MainNavbarComponent } from './components/navbars/main-navbar/main-navbar.component';
+import { NavbarAccountMenuComponent } from './components/navbar-menus/navbar-account-menu/navbar-account-menu.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +21,8 @@ import { MainErrorAlertComponent } from './components/alerts/main-error-alert/ma
         ConnectMainMenuComponent,
         ConnectNavbarComponent,
         MainErrorAlertComponent,
+        MainNavbarComponent,
+        NavbarAccountMenuComponent,
     ],
     imports: [
         CommonModule,
@@ -31,7 +35,9 @@ import { MainErrorAlertComponent } from './components/alerts/main-error-alert/ma
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ConnectNavbarComponent
+        ConnectNavbarComponent,
+        MainNavbarComponent,
+        NavbarAccountMenuComponent
     ],
     providers: [],
     entryComponents: []

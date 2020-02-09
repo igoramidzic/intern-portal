@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/core/models/user/user.model';
+import { User, UserType } from 'src/app/core/models/user/user.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
@@ -25,6 +25,10 @@ export class SelfService {
 
   get user(): User {
     return this._user;
+  }
+
+  get userType(): UserType {
+    return this._user.userType;
   }
 
   setUser(user: User): void {

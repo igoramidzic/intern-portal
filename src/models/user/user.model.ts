@@ -4,7 +4,7 @@ import { Company, CompanyDocument } from "../company/company.model";
 
 export enum UserType {
     Admin = "admin",
-    Company = "company",
+    Manager = "manager",
     Intern = "intern"
 }
 

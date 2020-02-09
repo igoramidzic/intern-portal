@@ -1,0 +1,13 @@
+<a href="javascript:void(0);" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true"
+  aria-expanded="false">
+  Account
+</a>
+<div class="dropdown-menu dropdown-menu-right" style="width: 248px;">
+  <li class="dropdown-item dropdown-item-account disabled">
+    {{ selfService.fullName() }}
+    <h4 class="ml-2"><span class="badge primary-bg text-white">{{ selfService.userType }}</span></h4>
+  </li>
+  <a [routerLink]="['/login']" (click)="authService.logout()" class="dropdown-item dropdown-item-account">
+    Log Out
+  </a>
+</div>
