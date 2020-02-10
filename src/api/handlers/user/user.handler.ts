@@ -12,6 +12,17 @@ export let createNewUser = (user: User) =>
             });
     });
 
+export let getUserById = (id: string): Promise<UserDocument> =>
+    new Promise((resolve, reject) => {
+        User.findOne({ _id: id })
+            .then((user: UserDocument) => {
+                resolve(user);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    });
+
 export let getUserByEmail = (email: string): Promise<UserDocument> =>
     new Promise((resolve, reject) => {
         User.findOne({ email })

@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
+import { UserDocument, User } from "../user/user.model";
 
 export type Company = {
     name?: string,
+    users?: User[]
 }
 
 export type CompanyDocument = mongoose.Document & {
     name: string;
-    userId: string;
+    users: UserDocument[];
 };
 
 const companySchema = new mongoose.Schema({
@@ -17,6 +19,8 @@ const companySchema = new mongoose.Schema({
 companySchema.methods.toJSON = function () {
     const company = this;
     const companyObject = company.toObject();
+
+    delete companyObject.users;
 
     return companyObject;
 }

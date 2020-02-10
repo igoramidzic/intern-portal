@@ -13,6 +13,7 @@ routes.use((req: Request, res: Response, next: any) => {
 
 // Auth Protected
 routes.use('/self', require('./self/self.controller'));
+routes.use('/company', require('./company/company.controller'));
 
 routes.use('**', (req, res) => {
     res.status(404).json({

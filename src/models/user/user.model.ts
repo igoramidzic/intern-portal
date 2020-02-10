@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from 'bcrypt-nodejs';
-import { Company, CompanyDocument } from "../company/company.model";
+import { CompanyDocument } from "../company/company.model";
 
 export enum UserType {
     Admin = "admin",
@@ -9,12 +9,13 @@ export enum UserType {
 }
 
 export type User = {
+    id?: string,
     firstName?: string,
     lastName?: string,
     email?: string,
     password?: string,
     userType?: string,
-    company?: Company,
+    company?: string,
 }
 
 export type UserDocument = mongoose.Document & {
@@ -57,6 +58,8 @@ userSchema.methods.toJSON = function () {
 userSchema.pre("save", function save(next) {
     const user: any = this;
 
+    user.firstName = user.firstName.trim();
+    user.lastName = user.lastName.trim();
     user.email = user.email.toLowerCase().trim();
 
     if (!user.isModified("password")) { return next(); }
