@@ -8,6 +8,7 @@ export type User = {
     password?: string;
     userType?: UserType;
     company?: Company;
+    setupCompleted?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }

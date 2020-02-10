@@ -7,6 +7,7 @@ import { ConnectLayoutComponent } from './connect-layout/connect-layout.componen
 import { CompanyConnectLayoutComponent } from './connect-layout/company-connect-layout/company-connect-layout.component';
 import { InternConnectLayoutComponent } from './connect-layout/intern-connect-layout/intern-connect-layout.component';
 import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.component';
+import { SetupLayoutComponent } from './setup-layout/setup-layout.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.com
         ConnectLayoutComponent,
         CompanyConnectLayoutComponent,
         InternConnectLayoutComponent,
-        NotFoundLayoutComponent
+        NotFoundLayoutComponent,
+        SetupLayoutComponent
     ],
     imports: [
         SharedModule,

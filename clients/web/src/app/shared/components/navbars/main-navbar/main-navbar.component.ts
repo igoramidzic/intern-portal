@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelfService } from 'src/app/services/self/self.service';
 
 @Component({
   selector: 'app-main-navbar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public selfService: SelfService) { }
 
   ngOnInit() {
   }

@@ -1,0 +1,5 @@
+<app-main-navbar></app-main-navbar>
+
+<app-admin-setup *ngIf="selfService.userType == UserType.Admin"></app-admin-setup>
+<app-manager-setup *ngIf="selfService.userType == UserType.Manager"></app-manager-setup>
+<app-intern-setup *ngIf="selfService.userType == UserType.Intern"></app-intern-setup>

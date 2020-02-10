@@ -12,6 +12,9 @@ import { ConnectNavbarComponent } from './components/navbars/connect-navbar/conn
 import { MainErrorAlertComponent } from './components/alerts/main-error-alert/main-error-alert.component';
 import { MainNavbarComponent } from './components/navbars/main-navbar/main-navbar.component';
 import { NavbarAccountMenuComponent } from './components/navbar-menus/navbar-account-menu/navbar-account-menu.component';
+import { AdminSetupComponent } from './components/setup/admin-setup/admin-setup.component';
+import { ManagerSetupComponent } from './components/setup/manager-setup/manager-setup.component';
+import { InternSetupComponent } from './components/setup/intern-setup/intern-setup.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +26,9 @@ import { NavbarAccountMenuComponent } from './components/navbar-menus/navbar-acc
         MainErrorAlertComponent,
         MainNavbarComponent,
         NavbarAccountMenuComponent,
+        AdminSetupComponent,
+        ManagerSetupComponent,
+        InternSetupComponent,
     ],
     imports: [
         CommonModule,
@@ -37,7 +43,10 @@ import { NavbarAccountMenuComponent } from './components/navbar-menus/navbar-acc
         ReactiveFormsModule,
         ConnectNavbarComponent,
         MainNavbarComponent,
-        NavbarAccountMenuComponent
+        NavbarAccountMenuComponent,
+        AdminSetupComponent,
+        ManagerSetupComponent,
+        InternSetupComponent,
     ],
     providers: [],
     entryComponents: []

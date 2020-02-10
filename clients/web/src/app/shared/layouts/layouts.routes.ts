@@ -11,13 +11,33 @@ import { InternLoginComponent } from '../components/connect/intern/intern-login/
 import { NotFoundLayoutComponent } from './not-found-layout/not-found-layout.component';
 import { ConnectMainMenuComponent } from '../components/connect/connect-main-menu/connect-main-menu.component';
 import { SelfGuard } from 'src/app/core/guards/self/self.guard';
+import { SetupCompletedGuard } from 'src/app/core/guards/setup-completed/setup-completed.guard';
+import { SetupNotCompletedGuard } from 'src/app/core/guards/setup-not-completed/setup-not-completed.guard';
+import { SetupLayoutComponent } from './setup-layout/setup-layout.component';
 
 export const LAYOUTS_ROUTES: Routes = [
     {
         path: '',
         canActivate: [AuthGuard, SelfGuard],
-        component: MainLayoutComponent,
-        loadChildren: '../../pages/pages.module#PagesModule'
+        children: [
+            {
+                path: '',
+                canActivate: [SetupCompletedGuard],
+                component: MainLayoutComponent,
+                loadChildren: '../../pages/pages.module#PagesModule'
+            }
+        ]
+    },
+    {
+        path: 'setup',
+        canActivate: [AuthGuard, SelfGuard],
+        children: [
+            {
+                path: '',
+                canActivate: [SetupNotCompletedGuard],
+                component: SetupLayoutComponent
+            }
+        ]
     },
     {
         path: 'connect',
