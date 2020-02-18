@@ -1,13 +1,10 @@
 import { Company, CompanyDocument } from "../../../models/company/company.model";
 import { UserDocument } from "../../../models/user/user.model";
 
-export let createNewCompany = (company: Company, user: UserDocument) =>
+export let createNewCompany = (company: Company): Promise<CompanyDocument> =>
     new Promise((resolve, reject) => {
         Company.create(company)
             .then(async (company: CompanyDocument) => {
-                user.company = company;
-                user.save().then(() => { })
-                    .catch(() => reject());
                 resolve(company);
             })
             .catch((error: any) => {

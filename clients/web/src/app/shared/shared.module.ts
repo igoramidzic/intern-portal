@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
+import { NgPipesModule } from 'ngx-pipes';
+
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { InternLoginComponent } from './components/connect/intern/intern-login/intern-login.component';
@@ -15,6 +17,9 @@ import { NavbarAccountMenuComponent } from './components/navbar-menus/navbar-acc
 import { AdminSetupComponent } from './components/setup/admin-setup/admin-setup.component';
 import { ManagerSetupComponent } from './components/setup/manager-setup/manager-setup.component';
 import { InternSetupComponent } from './components/setup/intern-setup/intern-setup.component';
+import { CompanySetupFormComponent } from './components/setup/admin-setup/company-setup-form/company-setup-form.component';
+import { ReviewSetupFormComponent } from './components/setup/admin-setup/review-setup-form/review-setup-form.component';
+import { SetupSubmittingComponent } from './components/setup/admin-setup/setup-submitting/setup-submitting.component';
 
 @NgModule({
     declarations: [
@@ -29,12 +34,16 @@ import { InternSetupComponent } from './components/setup/intern-setup/intern-set
         AdminSetupComponent,
         ManagerSetupComponent,
         InternSetupComponent,
+        CompanySetupFormComponent,
+        ReviewSetupFormComponent,
+        SetupSubmittingComponent,
     ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
+        NgPipesModule,
     ],
     exports: [
         RouterModule,

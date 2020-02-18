@@ -1,5 +1,12 @@
 <app-main-navbar></app-main-navbar>
 
-<app-admin-setup *ngIf="selfService.userType == UserType.Admin"></app-admin-setup>
-<app-manager-setup *ngIf="selfService.userType == UserType.Manager"></app-manager-setup>
-<app-intern-setup *ngIf="selfService.userType == UserType.Intern"></app-intern-setup>
+<div class="container">
+  <div class="list-group-item p-md-5 p-4">
+    <h3 class="mb-4">
+      <span class="badge primary-bg text-white">{{ selfService.userType }} setup</span>
+    </h3>
+    <app-admin-setup *ngIf="selfService.userType == UserType.Admin"></app-admin-setup>
+    <app-manager-setup *ngIf="selfService.userType == UserType.Manager"></app-manager-setup>
+    <app-intern-setup *ngIf="selfService.userType == UserType.Intern"></app-intern-setup>
+  </div>
+</div>

@@ -16,7 +16,7 @@ export type User = {
     password?: string,
     userType?: string,
     company?: string,
-    setupComplete?: boolean,
+    setupCompleted?: boolean,
 }
 
 export type UserDocument = mongoose.Document & {
@@ -27,7 +27,7 @@ export type UserDocument = mongoose.Document & {
 
     userType: string,
     company: CompanyDocument,
-    setupComplete: boolean,
+    setupCompleted: boolean,
 
     comparePassword: comparePasswordFunction
 }
@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, lowercase: true, required: true, unique: true },
     password: { type: String, required: true, minLength: 8 },
     userType: { type: String, lowercase: true },
-    setupComplete: { type: Boolean },
+    setupCompleted: { type: Boolean },
     company: { type: mongoose.Types.ObjectId, ref: 'Company', required: false }
 }, { timestamps: true });
 

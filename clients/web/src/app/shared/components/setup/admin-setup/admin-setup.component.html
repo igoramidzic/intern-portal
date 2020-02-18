@@ -1,1 +1,13 @@
-<p>admin-setup works!</p>
+<div class="mb-4">
+  <h3 class="hint">Welcome!</h3>
+  <p class="hint">Let's get you set up.</p>
+</div>
+
+<app-company-setup-form *ngIf="step == Steps.Company" [company]="company" (companyEmitter)="onCompanyEmit($event)">
+</app-company-setup-form>
+
+<app-review-setup-form *ngIf="step == Steps.Review" [company]="company" (completeSetupEmitter)="completeSetup()"
+  (editEmitter)="step = $event">
+</app-review-setup-form>
+
+<app-setup-submitting *ngIf="step == Steps.Submitting"></app-setup-submitting>

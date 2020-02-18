@@ -1,7 +1,7 @@
 <form (ngSubmit)="login()" [formGroup]="loginForm">
   <div class="mb-4">
     <label class="mb-2" for="email">Email</label>
-    <input type="text" name="email" formControlName="email" class="input input-lg mb-2 show-errors">
+    <input autofocus type="text" name="email" formControlName="email" class="input input-lg mb-2 show-errors">
 
     <label class="mb-2" for="password">Password</label>
     <input type="password" name="password" formControlName="password" class="input input-lg mb-2 show-errors">
