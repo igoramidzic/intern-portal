@@ -51,7 +51,7 @@ routes.post("/", async (req: Request, res: Response) => {
 
     let userDoc: UserDocument = await getUserById(user.id);
 
-    await createNewCompany(company, userDoc)
+    await createNewCompany(company)
         .then(async (company: CompanyDocument) => {
             return res.status(200).json(company);
         })

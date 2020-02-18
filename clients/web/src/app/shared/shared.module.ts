@@ -19,7 +19,9 @@ import { ManagerSetupComponent } from './components/setup/manager-setup/manager-
 import { InternSetupComponent } from './components/setup/intern-setup/intern-setup.component';
 import { CompanySetupFormComponent } from './components/setup/admin-setup/company-setup-form/company-setup-form.component';
 import { ReviewSetupFormComponent } from './components/setup/admin-setup/review-setup-form/review-setup-form.component';
-import { SetupSubmittingComponent } from './components/setup/admin-setup/setup-submitting/setup-submitting.component';
+import { ManagerSetupReviewFormComponent } from './components/setup/manager-setup/manager-setup-review-form/manager-setup-review-form.component';
+import { SetupSubmittingComponent } from './components/setup/setup-submitting/setup-submitting.component';
+import { InternSetupReviewFormComponent } from './components/setup/intern-setup/intern-setup-review-form/intern-setup-review-form.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +39,8 @@ import { SetupSubmittingComponent } from './components/setup/admin-setup/setup-s
         CompanySetupFormComponent,
         ReviewSetupFormComponent,
         SetupSubmittingComponent,
+        ManagerSetupReviewFormComponent,
+        InternSetupReviewFormComponent,
     ],
     imports: [
         CommonModule,
@@ -56,6 +60,7 @@ import { SetupSubmittingComponent } from './components/setup/admin-setup/setup-s
         AdminSetupComponent,
         ManagerSetupComponent,
         InternSetupComponent,
+        SetupSubmittingComponent
     ],
     providers: [],
     entryComponents: []

@@ -24,3 +24,31 @@ export let setupAdmin = (user: User, data: { company: Company }) =>
             reject(e)
         }
     });
+
+export let setupManager = (user: User, data: {}) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            let userDoc: UserDocument = await getUserById(user.id);
+            userDoc.setupCompleted = true;
+            userDoc.save().then(() => { })
+                .catch(() => reject());
+
+            resolve({});
+        } catch (e) {
+            reject(e)
+        }
+    });
+
+export let setupIntern = (user: User, data: {}) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            let userDoc: UserDocument = await getUserById(user.id);
+            userDoc.setupCompleted = true;
+            userDoc.save().then(() => { })
+                .catch(() => reject());
+
+            resolve({});
+        } catch (e) {
+            reject(e)
+        }
+    });

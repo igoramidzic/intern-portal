@@ -1,1 +1,9 @@
-<p>manager-setup works!</p>
+<div class="mb-4">
+  <h3 class="hint">Welcome!</h3>
+  <p class="hint">Let's get you set up.</p>
+</div>
+
+<app-manager-setup-review-form *ngIf="step == Steps.Review" (completeSetupEmitter)="completeSetup()">
+</app-manager-setup-review-form>
+
+<app-setup-submitting *ngIf="step == Steps.Submitting"></app-setup-submitting>

@@ -27,7 +27,6 @@ export class AdminSetupComponent implements OnInit {
   }
 
   completeSetup(): void {
-    console.log()
     this.step++;
 
     this.setupService.setupAdmin({ company: this.company })

@@ -4,7 +4,7 @@ import { ClientErrorResponse, serverError, asyncHandler } from "../../../api/hel
 import { Company, CompanyDocument } from "../../../models/company/company.model";
 import { createNewCompany, getCompanyById, updateCompany } from "../../../api/handlers/company/company.handler";
 import { getUserById } from "../../../api/handlers/user/user.handler";
-import { setupAdmin } from "../../../api/handlers/setup/setup.handler";
+import { setupAdmin, setupManager } from "../../../api/handlers/setup/setup.handler";
 
 const routes: Router = Router()
 
@@ -38,45 +38,69 @@ routes.post("/admin", async (req: Request, res: Response) => {
         return res.status(200).json(result);
     } catch (e) {
         return res.status(400).json(new ClientErrorResponse([e]))
-
     }
 });
 
 /**
- * Setup Admin
+ * Setup Manager
  */
-routes.post("/delete-later", async (req: Request, res: Response) => {
+routes.post("/manager", async (req: Request, res: Response) => {
     let user: User = req.user;
-    const company: Company = req.body;
+    let { } = req.body;
 
-    company.name = company.name == null ? null : company.name.trim();
-
-    // Check if user is admin
-    if (user.userType != UserType.Admin)
+    if (user.userType != UserType.Manager)
         return res.status(403).json(
-            new ClientErrorResponse(["Only an admin can create a comopany."]));
+            new ClientErrorResponse(["Only a manager can perform manager setup."]));
 
-    // Check if user already belongs to a company
-    const companyExists: CompanyDocument = await getCompanyById(user.company);
-    if (companyExists != null)
+    if (user.setupCompleted)
         return res.status(400).json(
-            new ClientErrorResponse(["Company already exists. Not allowed to create multiple companies."]));
+            new ClientErrorResponse(["Setup was already completed."]));
 
     const inputErrors: string[] = [];
 
-    // Check if company from body is valid
-    if (!company.name) inputErrors.push("Company name cannot be empty.")
+    // Check input from body is valid
+    // ..
 
     if (inputErrors.length > 0)
         return res.status(400).json(new ClientErrorResponse(inputErrors));
 
-    let userDoc: UserDocument = await getUserById(user.id);
+    try {
+        let result = await setupManager(user, {});
+        return res.status(200).json(result);
+    } catch (e) {
+        return res.status(400).json(new ClientErrorResponse([e]))
+    }
+});
 
-    await createNewCompany(company)
-        .then(async (company: CompanyDocument) => {
-            return res.status(200).json(company);
-        })
-        .catch(() => serverError(res))
+/**
+ * Setup Manager
+ */
+routes.post("/intern", async (req: Request, res: Response) => {
+    let user: User = req.user;
+    let { } = req.body;
+
+    if (user.userType != UserType.Intern)
+        return res.status(403).json(
+            new ClientErrorResponse(["Only an intern can perform intern setup."]));
+
+    if (user.setupCompleted)
+        return res.status(400).json(
+            new ClientErrorResponse(["Setup was already completed."]));
+
+    const inputErrors: string[] = [];
+
+    // Check input from body is valid
+    // ..
+
+    if (inputErrors.length > 0)
+        return res.status(400).json(new ClientErrorResponse(inputErrors));
+
+    try {
+        let result = await setupManager(user, {});
+        return res.status(200).json(result);
+    } catch (e) {
+        return res.status(400).json(new ClientErrorResponse([e]))
+    }
 });
 
 module.exports = routes;

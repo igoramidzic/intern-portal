@@ -20,4 +20,22 @@ export class SetupService {
         }, (err: ClientErrorResponse) => reject(err))
     })
   }
+
+  setupManager(data: {}): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiBase}${APIs.Setup.Manager}`, data)
+        .subscribe((result: {}) => {
+          resolve(result);
+        }, (err: ClientErrorResponse) => reject(err))
+    })
+  }
+
+  setupIntern(data: {}): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.apiBase}${APIs.Setup.Intern}`, data)
+        .subscribe((result: {}) => {
+          resolve(result);
+        }, (err: ClientErrorResponse) => reject(err))
+    })
+  }
 }
