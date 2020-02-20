@@ -15,10 +15,13 @@ $content-width: 1054px;
   --input-background-hover: var(--background);
   --primary-color: #FF8552;
   --secondary-color: #71a0b1;
+  --admin-color: #43AA8B;
+  --manager-color: #A3320B;
+  --intern-color: #326273;
   --success-color: #2bd0ba;
   --danger-color: #d14128;
-  --border-color: #f2f2f2;
-  --background-hover: #f2f2f2;
+  --border-color: #f3f3f3;
+  --background-hover: #f3f3f3;
   --hint-color: #8c8c8e;
   --box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(42, 46, 46, 0.09);
   transition: all 0.25s ease;
@@ -203,6 +206,30 @@ i {
 
 .main-bg {
   background-color: var(--background);
+}
+
+.intern-color {
+  color: var(--intern-color);
+}
+
+.intern-bg {
+  background-color: var(--intern-color);
+}
+
+.manager-color {
+  color: var(--manager-color);
+}
+
+.manager-bg {
+  background-color: var(--manager-color);
+}
+
+.admin-color {
+  color: var(--admin-color);
+}
+
+.admin-bg {
+  background-color: var(--admin-color);
 }
 
 footer {

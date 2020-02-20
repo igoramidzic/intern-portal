@@ -24,6 +24,8 @@ routes.post("/admin", async (req: Request, res: Response) => {
             new ClientErrorResponse(["Setup was already completed."]));
 
     company.name = company.name == null ? null : company.name.trim();
+    let userDoc: UserDocument = await getUserById(user._id);
+    company.users = [userDoc];
 
     const inputErrors: string[] = [];
 

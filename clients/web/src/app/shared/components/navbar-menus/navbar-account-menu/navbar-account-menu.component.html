@@ -5,7 +5,7 @@
 <div class="dropdown-menu dropdown-menu-right" style="width: 248px;">
   <li class="dropdown-item dropdown-item-account disabled dropdown-divider">
     {{ selfService.fullName() }}
-    <h4 class="ml-2"><span class="badge primary-bg text-white">{{ selfService.userType }}</span></h4>
+    <app-user-type-badge class="ml-2" [userType]="selfService.userType" [size]="'sm'"></app-user-type-badge>
   </li>
   <a [routerLink]="['/login']" (click)="authService.logout()" class="dropdown-item dropdown-item-account">
     Log Out

@@ -22,43 +22,6 @@ routes.get("/", async (req: Request, res: Response) => {
 });
 
 /**
- * Create company
- */
-routes.post("/", async (req: Request, res: Response) => {
-    let user: User = req.user;
-    const company: Company = req.body;
-
-    company.name = company.name == null ? null : company.name.trim();
-
-    // Check if user is admin
-    if (user.userType != UserType.Admin)
-        return res.status(403).json(
-            new ClientErrorResponse(["Only an admin can create a comopany."]));
-
-    // Check if user already belongs to a company
-    const companyExists: CompanyDocument = await getCompanyById(user.company);
-    if (companyExists != null)
-        return res.status(400).json(
-            new ClientErrorResponse(["Company already exists. Not allowed to create multiple companies."]));
-
-    const inputErrors: string[] = [];
-
-    // Check if company from body is valid
-    if (!company.name) inputErrors.push("Company name cannot be empty.")
-
-    if (inputErrors.length > 0)
-        return res.status(400).json(new ClientErrorResponse(inputErrors));
-
-    let userDoc: UserDocument = await getUserById(user.id);
-
-    await createNewCompany(company)
-        .then(async (company: CompanyDocument) => {
-            return res.status(200).json(company);
-        })
-        .catch(() => serverError(res))
-});
-
-/**
  * Update company
  */
 routes.put("/", asyncHandler(async (req: Request, res: Response) => {

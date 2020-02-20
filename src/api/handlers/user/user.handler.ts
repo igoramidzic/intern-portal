@@ -1,13 +1,23 @@
 import { User, UserDocument } from "../../../models/user/user.model";
 
-export let createNewUser = (user: User) =>
+export let createNewUser = (user: User): Promise<UserDocument> =>
     new Promise((resolve, reject) => {
         User.create(user)
             .then(async (user: UserDocument) => {
                 resolve(user);
             })
             .catch((error: any) => {
-                console.log(error);
+                reject(error);
+            });
+    });
+
+export let updateUser = (userId: string, user: User): Promise<UserDocument> =>
+    new Promise((resolve, reject) => {
+        User.findOneAndUpdate({ _id: userId }, user, { new: true })
+            .then(async (user: UserDocument) => {
+                resolve(user);
+            })
+            .catch((error: any) => {
                 reject(error);
             });
     });

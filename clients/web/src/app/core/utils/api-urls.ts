@@ -5,4 +5,5 @@ export const APIs =
         Manager: '/setup/manager',
         Intern: '/setup/intern',
     },
+    Users: '/users'
 }

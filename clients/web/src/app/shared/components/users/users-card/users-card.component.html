@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-title py-2">
+    <div class="d-flex align-items-center justify-content-between">
+      <h3>Users</h3>
+      <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Filter: {{ (filterBy || 'All') | titlecase }}
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <li (click)="filterBy = null" class="dropdown-item dropdown-item-account dropdown-divider">
+          All
+        </li>
+        <li (click)="filterBy = UserType.Admin" class="dropdown-item dropdown-item-account dropdown-divider">
+          Admins
+        </li>
+        <li (click)="filterBy = UserType.Manager" class="dropdown-item dropdown-item-account dropdown-divider">
+          Managers
+        </li>
+        <li (click)="filterBy = UserType.Intern" class="dropdown-item dropdown-item-account dropdown-divider">
+          Interns
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr class="border-none">
+          <th class="link" scope="col">User Type</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover"
+          [routerLink]="[(user.userType == UserType.Admin || user.userType == UserType.Manager ? '/employees/' : '/interns/') + user._id]"
+          *ngFor="let user of filteredUsers" style="cursor: pointer; outline: none">
+          <th>
+            <app-user-type-badge [userType]="user.userType" [size]="'sm'"></app-user-type-badge>
+          </th>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td><span class="font-weight-bold">{{ user.email }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

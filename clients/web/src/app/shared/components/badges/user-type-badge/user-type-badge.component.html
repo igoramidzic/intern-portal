@@ -1,0 +1,27 @@
+<h2 *ngIf="size == 'lg'">
+  <span class="badge text-white"
+    [ngClass]="{ 'admin-bg': userType == UserType.Admin, 'manager-bg': userType == UserType.Manager, 'intern-bg': userType == UserType.Intern }">
+    {{ userType }}
+  </span>
+</h2>
+
+<h3 *ngIf="size == 'md'">
+  <span class="badge text-white"
+    [ngClass]="{ 'admin-bg': userType == UserType.Admin, 'manager-bg': userType == UserType.Manager, 'intern-bg': userType == UserType.Intern }">
+    {{ userType }}
+  </span>
+</h3>
+
+<h4 *ngIf="size == 'sm'">
+  <span class="badge text-white"
+    [ngClass]="{ 'admin-bg': userType == UserType.Admin, 'manager-bg': userType == UserType.Manager, 'intern-bg': userType == UserType.Intern }">
+    {{ userType }}
+  </span>
+</h4>
+
+<h5 *ngIf="size == 'xs'">
+  <span class="badge text-white"
+    [ngClass]="{ 'admin-bg': userType == UserType.Admin, 'manager-bg': userType == UserType.Manager, 'intern-bg': userType == UserType.Intern }">
+    {{ userType }}
+  </span>
+</h5>

@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 
 export const PAGES_ROUTES: Routes = [
     {
         path: '',
-        component: HomePageComponent,
+        redirectTo: 'dashboard',
+    },
+    {
+        path: 'dashboard',
+        component: DashboardPageComponent
     }
 ]

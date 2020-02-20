@@ -31,6 +31,22 @@ export class SelfService {
     return this._user.userType;
   }
 
+  get isAdminOrManager(): boolean {
+    return this._user.userType == UserType.Admin || this._user.userType == UserType.Manager;
+  }
+
+  get isAdmin(): boolean {
+    return this._user.userType == UserType.Admin;
+  }
+
+  get isManager(): boolean {
+    return this._user.userType == UserType.Manager;
+  }
+
+  get isIntern(): boolean {
+    return this._user.userType == UserType.Intern;
+  }
+
   setUser(user: User): void {
     this._user = user;
   }

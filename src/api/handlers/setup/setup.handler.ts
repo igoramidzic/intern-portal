@@ -6,14 +6,14 @@ import { getUserById } from "../user/user.handler";
 export let setupAdmin = (user: User, data: { company: Company }) =>
     new Promise(async (resolve, reject) => {
         // Check if user already belongs to a company
-        const companyExists: CompanyDocument = await getCompanyById(user.id);
+        const companyExists: CompanyDocument = await getCompanyById(user._id);
         if (companyExists != null)
             reject("User already belongs to a company");
 
         try {
             let company: CompanyDocument = await createNewCompany(data.company);
 
-            let userDoc: UserDocument = await getUserById(user.id);
+            let userDoc: UserDocument = await getUserById(user._id);
             userDoc.company = company;
             userDoc.setupCompleted = true;
             userDoc.save().then(() => { })
@@ -28,7 +28,7 @@ export let setupAdmin = (user: User, data: { company: Company }) =>
 export let setupManager = (user: User, data: {}) =>
     new Promise(async (resolve, reject) => {
         try {
-            let userDoc: UserDocument = await getUserById(user.id);
+            let userDoc: UserDocument = await getUserById(user._id);
             userDoc.setupCompleted = true;
             userDoc.save().then(() => { })
                 .catch(() => reject());
@@ -42,7 +42,7 @@ export let setupManager = (user: User, data: {}) =>
 export let setupIntern = (user: User, data: {}) =>
     new Promise(async (resolve, reject) => {
         try {
-            let userDoc: UserDocument = await getUserById(user.id);
+            let userDoc: UserDocument = await getUserById(user._id);
             userDoc.setupCompleted = true;
             userDoc.save().then(() => { })
                 .catch(() => reject());

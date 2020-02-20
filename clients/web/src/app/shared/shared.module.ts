@@ -22,6 +22,8 @@ import { ReviewSetupFormComponent } from './components/setup/admin-setup/review-
 import { ManagerSetupReviewFormComponent } from './components/setup/manager-setup/manager-setup-review-form/manager-setup-review-form.component';
 import { SetupSubmittingComponent } from './components/setup/setup-submitting/setup-submitting.component';
 import { InternSetupReviewFormComponent } from './components/setup/intern-setup/intern-setup-review-form/intern-setup-review-form.component';
+import { UserTypeBadgeComponent } from './components/badges/user-type-badge/user-type-badge.component';
+import { UsersCardComponent } from './components/users/users-card/users-card.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +43,8 @@ import { InternSetupReviewFormComponent } from './components/setup/intern-setup/
         SetupSubmittingComponent,
         ManagerSetupReviewFormComponent,
         InternSetupReviewFormComponent,
+        UserTypeBadgeComponent,
+        UsersCardComponent,
     ],
     imports: [
         CommonModule,
@@ -60,7 +64,9 @@ import { InternSetupReviewFormComponent } from './components/setup/intern-setup/
         AdminSetupComponent,
         ManagerSetupComponent,
         InternSetupComponent,
-        SetupSubmittingComponent
+        SetupSubmittingComponent,
+        UserTypeBadgeComponent,
+        UsersCardComponent,
     ],
     providers: [],
     entryComponents: []
