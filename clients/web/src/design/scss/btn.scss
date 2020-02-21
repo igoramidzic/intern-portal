@@ -101,6 +101,17 @@
   }
 }
 
+.btn-circle {
+  width: 36px;
+  border-radius: 100%;
+  min-width: 0px;
+  padding: 0;
+}
+
+.btn-lg.btn-circle {
+  width: 48px;
+}
+
 .btn-underline.active {
   color: var(--primary-color);
   border-color: var(--primary-color);

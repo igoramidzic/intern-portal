@@ -24,6 +24,13 @@ import { SetupSubmittingComponent } from './components/setup/setup-submitting/se
 import { InternSetupReviewFormComponent } from './components/setup/intern-setup/intern-setup-review-form/intern-setup-review-form.component';
 import { UserTypeBadgeComponent } from './components/badges/user-type-badge/user-type-badge.component';
 import { UsersCardComponent } from './components/users/users-card/users-card.component';
+import { UsersSidebarComponent } from './components/users/users-sidebar/users-sidebar.component';
+import { UserSideCardComponent } from './components/users/user-side-card/user-side-card.component';
+import { UserSmallBarComponent } from './components/users/user-small-bar/user-small-bar.component';
+import { NoUserSelectedComponent } from './components/no-user-selected/no-user-selected.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { UserDetailsMenuComponent } from './components/users/user-details/user-details-menu/user-details-menu.component';
+import { UsersContentMenuComponent } from './components/users/users-content-menu/users-content-menu.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +52,13 @@ import { UsersCardComponent } from './components/users/users-card/users-card.com
         InternSetupReviewFormComponent,
         UserTypeBadgeComponent,
         UsersCardComponent,
+        UsersSidebarComponent,
+        UserSideCardComponent,
+        UserSmallBarComponent,
+        NoUserSelectedComponent,
+        UserDetailsComponent,
+        UserDetailsMenuComponent,
+        UsersContentMenuComponent,
     ],
     imports: [
         CommonModule,
@@ -67,6 +81,12 @@ import { UsersCardComponent } from './components/users/users-card/users-card.com
         SetupSubmittingComponent,
         UserTypeBadgeComponent,
         UsersCardComponent,
+        UsersSidebarComponent,
+        UserSideCardComponent,
+        UserSmallBarComponent,
+        NoUserSelectedComponent,
+        UserDetailsComponent,
+        UsersContentMenuComponent,
     ],
     providers: [],
     entryComponents: []

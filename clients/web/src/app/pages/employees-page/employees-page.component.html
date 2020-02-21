@@ -1,0 +1,17 @@
+<div class="row no-gutters h-100">
+  <div class="d-none d-md-block col-lg-6 col-md-8 mh-100" style="overflow-y: scroll;">
+    <app-users-sidebar [users]="employees"></app-users-sidebar>
+  </div>
+  <div class="d-md-none col mh-100">
+    <app-user-small-bar></app-user-small-bar>
+  </div>
+  <div class="col-lg-18 col-md-16 mh-100" style="overflow-y: scroll;">
+    <div class="gray-1-bg">
+      <app-user-details [user]="selectedEmployee" (updatedUser)="updatedUser($event)"></app-user-details>
+      <app-no-user-selected *ngIf="!selectedEmployee" [title]="'intern'"></app-no-user-selected>
+    </div>
+    <div class="p-4">
+      <pre>{{ selectedEmployee | json}}</pre>
+    </div>
+  </div>
+</div>

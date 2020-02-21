@@ -21,4 +21,13 @@ export class UserService {
         }, (err: ClientErrorResponse) => reject(err))
     })
   }
+
+  updateUser<T extends User>(user: T): Promise<T> {
+    return new Promise((resolve, reject) => {
+      this.http.put(environment.apiBase + APIs.Users + "/" + user._id, user)
+        .subscribe((user: T) => {
+          resolve(user);
+        }, (err: ClientErrorResponse) => reject(err))
+    })
+  }
 }

@@ -9,6 +9,7 @@ export type User = {
     userType?: UserType;
     company?: Company;
     setupCompleted?: boolean;
+    deactivated?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }

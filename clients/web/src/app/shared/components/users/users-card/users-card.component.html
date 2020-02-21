@@ -31,6 +31,7 @@
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +44,11 @@
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
           <td><span class="font-weight-bold">{{ user.email }}</span></td>
+          <td>
+            <span *ngIf="user.deactivated">
+              <i class="danger fas fa-minus-circle"></i>
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>

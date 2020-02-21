@@ -4,11 +4,15 @@ import { SharedModule } from '../shared/shared.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PAGES_ROUTES } from './pages.routes';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { InternsPageComponent } from './interns-page/interns-page.component';
+import { EmployeesPageComponent } from './employees-page/employees-page.component';
 
 @NgModule({
     declarations: [
         HomePageComponent,
         DashboardPageComponent,
+        InternsPageComponent,
+        EmployeesPageComponent,
     ],
     imports: [
         SharedModule,

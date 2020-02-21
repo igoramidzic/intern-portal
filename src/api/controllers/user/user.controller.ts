@@ -126,6 +126,9 @@ routes.put("/:id", async (req: Request, res: Response) => {
         newUser.userType = newUser.userType.trim();
         newUser.userType = newUser.userType == "" ? null : newUser.userType;
     }
+    if (newUser.deactivated) {
+        newUser.deactivated = newUser.deactivated;
+    }
 
     const credentialErrors: string[] = [];
 

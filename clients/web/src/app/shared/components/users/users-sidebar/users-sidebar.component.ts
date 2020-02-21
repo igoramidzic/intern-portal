@@ -1,23 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { User } from 'src/app/core/models/user/user.model';
 
 @Component({
-  selector: 'app-users-card',
-  templateUrl: './users-card.component.html',
-  styleUrls: ['./users-card.component.scss']
+  selector: 'app-users-sidebar',
+  templateUrl: './users-sidebar.component.html',
+  styleUrls: ['./users-sidebar.component.scss']
 })
-export class UsersCardComponent implements OnInit {
+export class UsersSidebarComponent implements OnInit {
 
   @Input() users: User[];
-  UserType = UserType;
-  filterBy: UserType;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  get filteredUsers(): User[] {
+  get sortedUsers(): User[] {
     if (!this.users)
       return undefined;
 
@@ -38,12 +36,6 @@ export class UsersCardComponent implements OnInit {
         if (a.firstName < b.firstName) return -1;
       });
 
-    return activeUsers.concat(deactivatedUsers)
-      .filter(u => {
-        if (this.filterBy) {
-          return u.userType == this.filterBy
-        }
-        return true;
-      })
+    return activeUsers.concat(deactivatedUsers);
   }
 }

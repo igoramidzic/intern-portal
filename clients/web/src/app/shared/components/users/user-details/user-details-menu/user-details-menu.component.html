@@ -1,0 +1,21 @@
+<button class="btn btn-circle btn-primary btn-outline" href="javascript:void(0);" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-ellipsis-v"></i>
+</button>
+<div class="dropdown-menu dropdown-menu-right" style="width: 248px;">
+  <li (click)="deactivateOrActivateIntern()" class="dropdown-item dropdown-item-account dropdown-divider"
+    *ngIf="user?.userType == UserType.Intern">
+    <div *ngIf="!user.deactivated">
+      <span class="mr-3">
+        <i class="danger fas fa-minus-circle"></i>
+      </span>
+      Deactivate
+    </div>
+    <div *ngIf="user.deactivated">
+      <span class="mr-3">
+        <i class="danger fas fa-undo"></i>
+      </span>
+      Reactivate
+    </div>
+  </li>
+</div>
