@@ -11,17 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InternsPageComponent implements OnInit {
 
-  userId: string;
   interns: Intern[];
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getInterns();
-
-    this.route.params.subscribe((params) => {
-      this.userId = params.userId;
-    })
   }
 
   getInterns(): void {
@@ -30,15 +25,5 @@ export class InternsPageComponent implements OnInit {
       .catch((err) => {
         console.log(err)
       })
-  }
-
-  get selectedIntern(): Intern {
-    if (this.interns)
-      return this.interns.find(i => i._id == this.userId);
-  }
-
-  updatedUser(intern: Intern): void {
-    let index: number = this.interns.findIndex(i => i._id == intern._id);
-    this.interns[index] = intern;
   }
 }

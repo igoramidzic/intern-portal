@@ -1,0 +1,25 @@
+<div class="user-card">
+  <div class="p-4">
+    <form (ngSubmit)="onUpdateUser()" [formGroup]="updateUserForm">
+      <div class="mb-4">
+        <label class="mb-2" for="first-name">First name</label>
+        <input type="text" name="first-name" formControlName="firstName" class="input mb-2 show-errors input-light">
+
+        <label class="mb-2" for="last-name">Last name</label>
+        <input type="text" name="last-name" formControlName="lastName" class="input input-light mb-2 show-errors">
+
+        <label class="mb-2" for="email">Email</label>
+        <input type="text" name="email" formControlName="email" class="input input-light mb-2 show-errors">
+
+        <div class="mt-3">
+          <app-main-error-alert [errors]="errors"></app-main-error-alert>
+          <app-main-success-alert [successes]="successes"></app-main-success-alert>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" [disabled]="isSubmitting">
+        Update
+      </button>
+    </form>
+  </div>
+</div>

@@ -78,6 +78,8 @@ routes.post("/", async (req: Request, res: Response) => {
     if (!company)
         return res.status(500).json(new ClientErrorResponse(["Company not found."]));
 
+    newUser.company = company.id;
+
     let userDoc: UserDocument = await createNewUser(newUser);
 
     company.users.push(userDoc);
@@ -99,10 +101,6 @@ routes.put("/:id", async (req: Request, res: Response) => {
     const updateUserId: string = req.params['id'];
     const newUser: User = req.body;
 
-    if (user.userType != UserType.Admin && user.userType != UserType.Manager)
-        return res.status(403).json(
-            new ClientErrorResponse(["You do not have sufficient permissions."]));
-
     delete newUser._id;
 
     const userDoc: UserDocument = await getUserById(updateUserId);
@@ -110,27 +108,57 @@ routes.put("/:id", async (req: Request, res: Response) => {
     if (userDoc == null)
         return res.status(404).json(new ClientErrorResponse(["User not found."]));
 
+    if (
+        user.userType == UserType.Intern // Intern cannot update Interns
+        ||
+        (
+            user.userType == UserType.Manager
+            &&
+            (
+                (userDoc.userType == UserType.Manager) || // Manager cannot update Managers
+                (
+                    userDoc.userType == UserType.Admin // Manager cannot update Admins
+                    ||
+                    newUser.userType == UserType.Admin // Manager cannot assign Admin type
+                    ||
+                    newUser.userType == UserType.Manager // Manager cannot assign Manager type
+                )
+            )
+        )
+    )
+        return res.status(403).json(
+            new ClientErrorResponse(["You do not have sufficient permissions."]));
+
+    const credentialErrors: string[] = [];
+
     if (newUser.firstName) {
         newUser.firstName = newUser.firstName.trim();
-        newUser.firstName = newUser.firstName == "" ? null : newUser.firstName;
+        if (newUser.firstName == "")
+            credentialErrors.push("First name cannot be empty");
     }
     if (newUser.lastName) {
         newUser.lastName = newUser.lastName.trim();
-        newUser.lastName = newUser.lastName == "" ? null : newUser.lastName;
+        if (newUser.lastName == "")
+            credentialErrors.push("Last name cannot be empty");
     }
     if (newUser.email) {
         newUser.email = newUser.email.trim();
-        newUser.email = newUser.email == "" ? null : newUser.email;
+        if (newUser.email == "")
+            credentialErrors.push("Email cannot be empty");
     }
     if (newUser.userType) {
         newUser.userType = newUser.userType.trim();
-        newUser.userType = newUser.userType == "" ? null : newUser.userType;
+        if (newUser.userType == "")
+            credentialErrors.push("UserType cannot be empty");
     }
     if (newUser.deactivated) {
         newUser.deactivated = newUser.deactivated;
     }
 
-    const credentialErrors: string[] = [];
+    // Check if UserType is valid
+    if (newUser.userType)
+        if (newUser.userType != UserType.Admin && newUser.userType != UserType.Manager && newUser.userType != UserType.Intern)
+            credentialErrors.push("UserType is not valid. (Admin, Manager, Intern)");
 
     // Check if email is already taken
     const userAlreadyExists: UserDocument = await getUserByEmail(newUser.email);

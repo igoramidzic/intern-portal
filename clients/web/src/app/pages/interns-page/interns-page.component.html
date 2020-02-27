@@ -6,13 +6,6 @@
     <app-user-small-bar></app-user-small-bar>
   </div>
   <div class="col-lg-18 col-md-16 mh-100" style="overflow-y: scroll;">
-    <div class="gray-1-bg">
-      <app-user-details [user]="selectedIntern" (updatedUser)="updatedUser($event)"></app-user-details>
-      <app-users-content-menu></app-users-content-menu>
-      <app-no-user-selected *ngIf="!selectedIntern" [title]="'intern'"></app-no-user-selected>
-    </div>
-    <div class="p-4">
-      <pre>{{ selectedIntern | json}}</pre>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

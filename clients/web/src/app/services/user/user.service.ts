@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { User, UserType } from 'src/app/core/models/user/user.model';
 import { environment } from 'src/environments/environment';
 import { APIs } from 'src/app/core/utils/api-urls';
-import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private _users: User[];
 
   constructor(private http: HttpClient) { }
 
@@ -17,8 +18,9 @@ export class UserService {
       this.http.get(environment.apiBase + APIs.Users +
         (userTypes ? ('?userTypes=' + userTypes.join(',')) : ""))
         .subscribe((users: User[]) => {
+          this._users = users;
           resolve(users);
-        }, (err: ClientErrorResponse) => reject(err))
+        }, (err) => reject(err.error))
     })
   }
 
@@ -27,7 +29,11 @@ export class UserService {
       this.http.put(environment.apiBase + APIs.Users + "/" + user._id, user)
         .subscribe((user: T) => {
           resolve(user);
-        }, (err: ClientErrorResponse) => reject(err))
+        }, (err) => reject(err.error))
     })
+  }
+
+  get users(): User[] {
+    return this._users;
   }
 }

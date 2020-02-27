@@ -41,6 +41,10 @@ label {
   }
 }
 
+.input-light {
+  background: var(--background);
+}
+
 .textarea.show-errors,
 .input.show-errors,
 .select.show-errors {

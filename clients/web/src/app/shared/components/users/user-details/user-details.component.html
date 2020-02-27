@@ -1,20 +1,30 @@
-<div class="p-4">
-  <div *ngIf="user">
-    <div class="d-flex align-items-start justify-content-between">
-      <div>
-        <h2>{{ user?.firstName }} {{ user?.lastName }}</h2>
-        <p class="hint">{{ user?.email }}</p>
-      </div>
+<div class="p-4" *ngIf="user">
+  <div class="d-flex align-items-start justify-content-between">
+    <div>
+      <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
+      <h4 class="hint mb-2">{{ user?.email }}</h4>
+      <p class="hint">Joined {{ user?.createdAt | date }}</p>
+    </div>
 
-      <div class="d-flex align-items-center">
+    <div class="text-right">
+      <div class="d-flex align-items-center justify-content-end mb-3">
         <span class="danger mr-3 d-inline-block" *ngIf="user.deactivated">Deactivated</span>
         <app-user-details-menu [user]="user" (deactivateOrActivateEmitter)="deactivateOrActivateIntern()">
         </app-user-details-menu>
       </div>
-
+      <div class="d-flex align-items-center">
+        <div>
+          <span class="mr-2 warning" *ngIf="!user.setupCompleted" style="font-size: 18px">
+            <i class="fas fa-exclamation-circle"></i>
+          </span>
+          <span class="mr-2 green" *ngIf="user.setupCompleted" style="font-size: 18px">
+            <i class="fas fa-check-circle"></i>
+          </span>
+        </div>
+        <div>
+          {{ user.setupCompleted ? 'Setup Completed' : 'Setup Pending' }}
+        </div>
+      </div>
     </div>
-  </div>
-  <div *ngIf="!user">
-    Loading
   </div>
 </div>

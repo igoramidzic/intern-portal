@@ -1,0 +1,6 @@
+<div class="alert" *ngIf="successes && successes.length > 0">
+  <span class="alert-message green" *ngFor="let success of successes">
+    <span style="vertical-align:middle;"><i class="fas fa-exclamation-circle alert-icon"></i></span>
+    <span class="message-content" style="vertical-align:middle;">{{ success }}</span>
+  </span>
+</div>

@@ -1,4 +1,8 @@
-<div class="p-4 gray-2-bg" style="min-height: 100%;">
+<div class="p-4 gray-2-bg" style="min-height: 100%;" *ngIf="users">
+  <div class="mb-2">
+    <app-user-add-side-card [userType]="users[0].userType"></app-user-add-side-card>
+  </div>
+
   <div class="mb-2" *ngFor="let user of sortedUsers">
     <app-user-side-card [user]="user"></app-user-side-card>
   </div>

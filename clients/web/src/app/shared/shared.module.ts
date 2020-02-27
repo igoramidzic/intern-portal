@@ -31,6 +31,10 @@ import { NoUserSelectedComponent } from './components/no-user-selected/no-user-s
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserDetailsMenuComponent } from './components/users/user-details/user-details-menu/user-details-menu.component';
 import { UsersContentMenuComponent } from './components/users/users-content-menu/users-content-menu.component';
+import { UserDetailsEditComponent } from './components/users/user-details/user-details-edit/user-details-edit.component';
+import { UserContentComponent } from './components/users/user-content/user-content.component';
+import { MainSuccessAlertComponent } from './components/alerts/main-success-alert/main-success-alert.component';
+import { UserAddSideCardComponent } from './components/users/user-add-side-card/user-add-side-card.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +63,10 @@ import { UsersContentMenuComponent } from './components/users/users-content-menu
         UserDetailsComponent,
         UserDetailsMenuComponent,
         UsersContentMenuComponent,
+        UserDetailsEditComponent,
+        UserContentComponent,
+        MainSuccessAlertComponent,
+        UserAddSideCardComponent,
     ],
     imports: [
         CommonModule,
@@ -87,6 +95,9 @@ import { UsersContentMenuComponent } from './components/users/users-content-menu
         NoUserSelectedComponent,
         UserDetailsComponent,
         UsersContentMenuComponent,
+        UserContentComponent,
+        MainSuccessAlertComponent,
+        UserAddSideCardComponent,
     ],
     providers: [],
     entryComponents: []
