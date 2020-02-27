@@ -55,6 +55,10 @@ routes.post('/login', (req: Request, res: Response) => {
                 return res.status(401)
                     .json(new ClientErrorResponse(["Unable to log in with provided credentials."]));
 
+            if (user.deactivated)
+                return res.status(401)
+                    .json(new ClientErrorResponse(["This account has been deactivated."]));
+
             // Compare passwords
             user.comparePassword(password, (err: Error, isMatch: boolean) => {
                 if (err) return serverError(res);
