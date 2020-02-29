@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'src/app/core/models/user/user.model';
+import { User, UserType } from 'src/app/core/models/user/user.model';
+import { SelfService } from 'src/app/services/self/self.service';
 
 @Component({
   selector: 'app-users-sidebar',
@@ -9,8 +10,9 @@ import { User } from 'src/app/core/models/user/user.model';
 export class UsersSidebarComponent implements OnInit {
 
   @Input() users: User[];
+  UserType = UserType
 
-  constructor() { }
+  constructor(private selfService: SelfService) { }
 
   ngOnInit() {
   }
@@ -37,5 +39,9 @@ export class UsersSidebarComponent implements OnInit {
       });
 
     return activeUsers.concat(deactivatedUsers);
+  }
+
+  get shouldShowAddButton(): boolean {
+    return (this.users[0].userType == UserType.Admin || this.users[0].userType == UserType.Manager) && this.selfService.isAdmin
   }
 }

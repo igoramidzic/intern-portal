@@ -11,17 +11,12 @@ import { UserType } from 'src/app/core/models/user/user.model';
 })
 export class EmployeesPageComponent implements OnInit {
 
-  userId: string;
   employees: Employee[];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getEmployees();
-
-    this.route.params.subscribe((params) => {
-      this.userId = params.userId;
-    })
   }
 
   getEmployees(): void {
@@ -30,15 +25,5 @@ export class EmployeesPageComponent implements OnInit {
       .catch((err) => {
         console.log(err)
       })
-  }
-
-  get selectedEmployee(): Employee {
-    if (this.employees)
-      return this.employees.find(i => i._id == this.userId);
-  }
-
-  updatedUser(employee: Employee): void {
-    let index: number = this.employees.findIndex(i => i._id == employee._id);
-    this.employees[index] = employee;
   }
 }

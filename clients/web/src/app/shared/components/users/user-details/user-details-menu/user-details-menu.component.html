@@ -4,7 +4,7 @@
 </button>
 <div class="dropdown-menu dropdown-menu-right" style="width: 248px;">
   <li (click)="deactivateOrActivateIntern()" class="dropdown-item dropdown-item-account dropdown-divider"
-    *ngIf="user?.userType == UserType.Intern">
+    *ngIf="shouldShowDeactivateButton">
     <div *ngIf="!user.deactivated">
       <span class="mr-3">
         <i class="danger fas fa-minus-circle"></i>
@@ -13,9 +13,16 @@
     </div>
     <div *ngIf="user.deactivated">
       <span class="mr-3">
-        <i class="danger fas fa-undo"></i>
+        <i class="warning fas fa-undo"></i>
       </span>
       Reactivate
     </div>
+  </li>
+
+  <li (click)="deleteUser()" class="dropdown-item dropdown-item-account dropdown-divider" *ngIf="user.deactivated">
+    <span class="mr-3">
+      <i class="danger fas fa-trash"></i>
+    </span>
+    Permanently Delete
   </li>
 </div>

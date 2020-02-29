@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Intern } from 'src/app/core/models/intern/intern';
 import { UserService } from 'src/app/services/user/user.service';
 import { UserType } from 'src/app/core/models/user/user.model';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-interns-page',
@@ -13,7 +12,7 @@ export class InternsPageComponent implements OnInit {
 
   interns: Intern[];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getInterns();

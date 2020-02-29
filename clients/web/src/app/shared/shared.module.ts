@@ -30,11 +30,12 @@ import { UserSmallBarComponent } from './components/users/user-small-bar/user-sm
 import { NoUserSelectedComponent } from './components/no-user-selected/no-user-selected.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserDetailsMenuComponent } from './components/users/user-details/user-details-menu/user-details-menu.component';
-import { UsersContentMenuComponent } from './components/users/users-content-menu/users-content-menu.component';
 import { UserDetailsEditComponent } from './components/users/user-details/user-details-edit/user-details-edit.component';
 import { UserContentComponent } from './components/users/user-content/user-content.component';
 import { MainSuccessAlertComponent } from './components/alerts/main-success-alert/main-success-alert.component';
 import { UserAddSideCardComponent } from './components/users/user-add-side-card/user-add-side-card.component';
+import { InternAddFormComponent } from './components/users/intern-add-form/intern-add-form.component';
+import { EmployeeAddFormComponent } from './components/users/employee-add-form/employee-add-form.component';
 
 @NgModule({
     declarations: [
@@ -62,11 +63,12 @@ import { UserAddSideCardComponent } from './components/users/user-add-side-card/
         NoUserSelectedComponent,
         UserDetailsComponent,
         UserDetailsMenuComponent,
-        UsersContentMenuComponent,
         UserDetailsEditComponent,
         UserContentComponent,
         MainSuccessAlertComponent,
         UserAddSideCardComponent,
+        InternAddFormComponent,
+        EmployeeAddFormComponent,
     ],
     imports: [
         CommonModule,
@@ -94,10 +96,11 @@ import { UserAddSideCardComponent } from './components/users/user-add-side-card/
         UserSmallBarComponent,
         NoUserSelectedComponent,
         UserDetailsComponent,
-        UsersContentMenuComponent,
         UserContentComponent,
         MainSuccessAlertComponent,
         UserAddSideCardComponent,
+        InternAddFormComponent,
+        EmployeeAddFormComponent,
     ],
     providers: [],
     entryComponents: []

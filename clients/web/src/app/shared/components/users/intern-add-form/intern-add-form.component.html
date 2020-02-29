@@ -1,0 +1,29 @@
+<div class="user-card">
+  <div class="p-4">
+    <form (ngSubmit)="onAddUser()" [formGroup]="addInternForm">
+      <div class="mb-4">
+        <label class="mb-2" for="new-first-name">First name</label>
+        <input type="text" name="new-first-name" formControlName="firstName" class="input mb-2 show-errors input-light">
+
+        <label class="mb-2" for="new-last-name">Last name</label>
+        <input type="text" name="new-last-name" formControlName="lastName" class="input input-light mb-2 show-errors">
+
+        <label class="mb-2" for="new-email">Email</label>
+        <input type="text" name="new-email" formControlName="email" class="input input-light mb-2 show-errors">
+
+        <label class="mb-2" for="new-password">Password</label>
+        <input type="password" name="new-password" formControlName="password"
+          class="input input-light mb-2 show-errors">
+
+        <div class="mt-3">
+          <app-main-error-alert [errors]="errors"></app-main-error-alert>
+          <app-main-success-alert [successes]="successes"></app-main-success-alert>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" [disabled]="isSubmitting">
+        Add
+      </button>
+    </form>
+  </div>
+</div>

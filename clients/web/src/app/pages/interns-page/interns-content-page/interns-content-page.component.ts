@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Intern } from 'src/app/core/models/intern/intern';
 import { UserService } from 'src/app/services/user/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserType } from 'src/app/core/models/user/user.model';
 
 @Component({
@@ -13,7 +13,8 @@ export class InternsContentPageComponent implements OnInit {
 
   userId: string;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -33,5 +34,9 @@ export class InternsContentPageComponent implements OnInit {
   userUpdated(intern: Intern): void {
     let index: number = this.interns.findIndex(i => i._id == intern._id);
     this.interns[index] = intern;
+  }
+
+  deletedUser(intern: Intern): void {
+    this.router.navigate(['/interns']);
   }
 }

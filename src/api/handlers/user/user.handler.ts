@@ -13,10 +13,19 @@ export let createNewUser = (user: User): Promise<UserDocument> =>
 
 export let updateUser = (userId: string, user: User): Promise<UserDocument> =>
     new Promise((resolve, reject) => {
-        console.log("Here", user)
         User.findOneAndUpdate({ _id: userId }, user, { new: true })
             .then(async (user: UserDocument) => {
-                console.log(user)
+                resolve(user);
+            })
+            .catch((error: any) => {
+                reject(error);
+            });
+    });
+
+export let deleteUser = (userId: string): Promise<UserDocument> =>
+    new Promise((resolve, reject) => {
+        User.findOneAndDelete({ _id: userId })
+            .then(async (user: UserDocument) => {
                 resolve(user);
             })
             .catch((error: any) => {

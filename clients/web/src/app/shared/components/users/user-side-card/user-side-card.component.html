@@ -6,6 +6,9 @@
       <div *ngIf="user.deactivated">
         <i class="danger fas fa-minus-circle"></i>
       </div>
+      <div *ngIf="!user.deactivated && user.setupCompleted">
+        <i class="green fas fa-check-circle"></i>
+      </div>
     </div>
     <p class="font-weight-normal hint mb-2">{{ user.email }}</p>
     <app-user-type-badge [userType]="user.userType"></app-user-type-badge>

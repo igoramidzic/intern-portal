@@ -1,0 +1,9 @@
+<div class="gray-1-bg p-4">
+  <app-user-details [user]="selectedEmployee" (updatedUserEmitter)="userUpdated($event)"
+    (deletedUserEmitter)="deletedUser($event)"></app-user-details>
+  <app-no-user-selected *ngIf="!selectedEmployee" [title]="'employee'"></app-no-user-selected>
+</div>
+<div class="p-4">
+  <app-user-content *ngIf="selectedEmployee" [user]="selectedEmployee" (userUpdatedEmitter)="userUpdated($event)">
+  </app-user-content>
+</div>

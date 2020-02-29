@@ -3,8 +3,7 @@ import { User, UserType } from 'src/app/core/models/user/user.model';
 
 @Component({
   selector: 'app-user-side-card',
-  templateUrl: './user-side-card.component.html',
-  styleUrls: ['./user-side-card.component.scss']
+  templateUrl: './user-side-card.component.html'
 })
 export class UserSideCardComponent implements OnInit {
 

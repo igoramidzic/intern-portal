@@ -1,5 +1,6 @@
-<div class="gray-1-bg">
-  <app-user-details [user]="selectedIntern" (updatedUser)="userUpdated($event)"></app-user-details>
+<div class="gray-1-bg p-4">
+  <app-user-details [user]="selectedIntern" (updatedUserEmitter)="userUpdated($event)" (deletedUserEmitter)="$event">
+  </app-user-details>
   <!-- <app-users-content-menu *ngIf="selectedIntern"></app-users-content-menu> -->
   <app-no-user-selected *ngIf="!selectedIntern" [title]="'intern'"></app-no-user-selected>
 </div>

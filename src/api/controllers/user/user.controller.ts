@@ -3,7 +3,7 @@ import { User, UserDocument, UserType } from "../../../models/user/user.model";
 import { CompanyDocument } from "../../../models/company/company.model";
 import { getCompanyById, getCompanyUsersById, updateCompany } from "../../../api/handlers/company/company.handler";
 import { ClientErrorResponse } from "../../../api/helpers/helpers";
-import { getUserByEmail, createNewUser, getUserById, updateUser } from "../../../api/handlers/user/user.handler";
+import { getUserByEmail, createNewUser, getUserById, updateUser, deleteUser } from "../../../api/handlers/user/user.handler";
 
 const routes: Router = Router()
 
@@ -171,6 +171,37 @@ routes.put("/:id", async (req: Request, res: Response) => {
     const updatedUser: UserDocument = await updateUser(updateUserId, newUser);
 
     res.status(200).send(updatedUser);
+});
+
+/**
+ * Delete user
+ */
+routes.delete("/:id", async (req: Request, res: Response) => {
+    const user: User = req.user;
+    const deleteUserId: string = req.params['id'];
+
+    const userDoc: UserDocument = await getUserById(deleteUserId);
+
+    if (userDoc == null)
+        return res.status(404).json(new ClientErrorResponse(["User not found."]));
+
+    if (
+        user.userType == UserType.Intern // Intern cannot delete Interns
+        ||
+        (
+            user.userType == UserType.Manager
+            &&
+            (
+                (userDoc.userType == UserType.Manager)
+            )
+        )
+    )
+        return res.status(403).json(
+            new ClientErrorResponse(["You do not have sufficient permissions."]));
+
+    const deletedUser: UserDocument = await deleteUser(deleteUserId);
+
+    res.status(200).send(deletedUser);
 });
 
 module.exports = routes;

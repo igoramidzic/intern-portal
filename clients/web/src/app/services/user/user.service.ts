@@ -33,6 +33,33 @@ export class UserService {
     })
   }
 
+  deleteUser(userId: string): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.http.delete(environment.apiBase + APIs.Users + "/" + userId)
+        .subscribe((user: User) => {
+          this.removeUserFromUsers(user);
+          resolve(user);
+        }, (err) => reject(err.error))
+    })
+  }
+
+  addUser<T extends User>(user: T): Promise<T> {
+    return new Promise((resolve, reject) => {
+      this.http.post(environment.apiBase + APIs.Users, user)
+        .subscribe((user: T) => {
+          if (this._users)
+            this._users.push(user)
+          resolve(user);
+        }, (err) => reject(err.error))
+    })
+  }
+
+  private removeUserFromUsers(user: User): void {
+    let index: number = this._users.findIndex(u => u._id == user._id);
+    if (index != -1)
+      this._users.splice(index, 1);
+  }
+
   get users(): User[] {
     return this._users;
   }

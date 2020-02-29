@@ -48,6 +48,9 @@
             <span *ngIf="user.deactivated">
               <i class="danger fas fa-minus-circle"></i>
             </span>
+            <span *ngIf="!user.deactivated && user.setupCompleted">
+              <i class="green fas fa-check-circle"></i>
+            </span>
           </td>
         </tr>
       </tbody>

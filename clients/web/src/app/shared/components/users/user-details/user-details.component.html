@@ -1,4 +1,4 @@
-<div class="p-4" *ngIf="user">
+<div *ngIf="user">
   <div class="d-flex align-items-start justify-content-between">
     <div>
       <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
@@ -9,7 +9,8 @@
     <div class="text-right">
       <div class="d-flex align-items-center justify-content-end mb-3">
         <span class="danger mr-3 d-inline-block" *ngIf="user.deactivated">Deactivated</span>
-        <app-user-details-menu [user]="user" (deactivateOrActivateEmitter)="deactivateOrActivateIntern()">
+        <app-user-details-menu [user]="user" (deactivateOrActivateEmitter)="deactivateOrActivateIntern()"
+          (deleteUserEmitter)="deleteUser()">
         </app-user-details-menu>
       </div>
       <div class="d-flex align-items-center">

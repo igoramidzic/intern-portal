@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User, UserType } from 'src/app/core/models/user/user.model';
 import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -10,10 +11,11 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserDetailsComponent implements OnInit {
 
   @Input() user: User;
-  @Output() updatedUser: EventEmitter<User> = new EventEmitter();
+  @Output() updatedUserEmitter: EventEmitter<User> = new EventEmitter();
+  @Output() deletedUserEmitter: EventEmitter<User> = new EventEmitter();
   UserType = UserType;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,15 @@ export class UserDetailsComponent implements OnInit {
   deactivateOrActivateIntern(): void {
     this.userService.updateUser({ ...this.user, deactivated: this.user.deactivated ? false : true })
       .then((user: User) => {
-        this.updatedUser.emit(user);
+        this.updatedUserEmitter.emit(user);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  deleteUser(): void {
+    this.userService.deleteUser(this.user._id)
+      .then((user: User) => {
+        this.deletedUserEmitter.emit(user)
       })
       .catch((err) => console.log(err));
   }
