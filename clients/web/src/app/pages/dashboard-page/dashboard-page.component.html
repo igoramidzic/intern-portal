@@ -1,7 +1,10 @@
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="col-lg-12 col-md-16 col-24">
+    <div class="col-lg-12 col-md-16 col-24 mb-5 mb-md-none">
       <app-users-card *ngIf="selfService.isAdminOrManager" [users]="users"></app-users-card>
+    </div>
+    <div class="col-lg-12 col-md-16 col-24">
+      <app-teams-card *ngIf="selfService.isAdminOrManager" [teams]="teams"></app-teams-card>
     </div>
   </div>
 </div>

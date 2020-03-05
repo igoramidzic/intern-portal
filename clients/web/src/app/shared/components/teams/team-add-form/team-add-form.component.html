@@ -1,0 +1,19 @@
+<div class="form-card">
+  <div class="p-4">
+    <form (ngSubmit)="onAddTeam()" [formGroup]="addTeamForm">
+      <div class="mb-4">
+        <label class="mb-2" for="new-team-name">Team name</label>
+        <input type="text" name="new-team-name" formControlName="name" class="input mb-2 show-errors input-light">
+
+        <div class="mt-3">
+          <app-main-error-alert [errors]="errors"></app-main-error-alert>
+          <app-main-success-alert [successes]="successes"></app-main-success-alert>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" [disabled]="isSubmitting">
+        Add
+      </button>
+    </form>
+  </div>
+</div>

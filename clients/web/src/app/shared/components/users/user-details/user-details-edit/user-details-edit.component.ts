@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/core/models/user/user.model';
+import { IUser } from 'src/app/core/models/user/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
@@ -10,9 +10,9 @@ import { ClientErrorResponse } from 'src/app/core/models/response/error-response
 })
 export class UserDetailsEditComponent implements OnInit, OnChanges {
 
-  @Input() user: User;
-  @Output() userUpdatedEmitter: EventEmitter<User> = new EventEmitter();
-  userToEdit: User;
+  @Input() user: IUser;
+  @Output() userUpdatedEmitter: EventEmitter<IUser> = new EventEmitter();
+  userToEdit: IUser;
 
   isSubmitting: boolean = false;
   errors: string[];
@@ -44,7 +44,7 @@ export class UserDetailsEditComponent implements OnInit, OnChanges {
     }
   }
 
-  setFormValues(user: User): void {
+  setFormValues(user: IUser): void {
     if (!user) return;
     this.updateUserForm.controls['firstName'].setValue(user.firstName);
     this.updateUserForm.controls['lastName'].setValue(user.lastName);
@@ -61,13 +61,13 @@ export class UserDetailsEditComponent implements OnInit, OnChanges {
     this.errors = [];
     this.successes = [];
 
-    let user: User = {
+    let user: IUser = {
       ...this.updateUserForm.value,
       _id: this.user._id
     }
 
     this.userService.updateUser(user)
-      .then((user: User) => {
+      .then((user: IUser) => {
         this.userUpdatedEmitter.emit(user);
         this.successes = ["Successfully updated"];
       })

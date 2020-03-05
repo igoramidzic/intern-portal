@@ -1,5 +1,5 @@
-import { User } from '../user/user.model';
+import { IUser } from '../user/user.model';
 
-export interface Employee extends User {
+export interface Employee extends IUser {
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
@@ -9,21 +9,21 @@ import { ClientErrorResponse } from 'src/app/core/models/response/error-response
 })
 export class SelfService {
 
-  private _user: User;
+  private _user: IUser;
 
   constructor(private http: HttpClient) { }
 
-  getSelf(): Promise<User> {
+  getSelf(): Promise<IUser> {
     return new Promise((resolve, reject) => {
       this.http.get(`${environment.apiBase}/self`)
-        .subscribe((user: User) => {
+        .subscribe((user: IUser) => {
           this._user = user;
           resolve(user);
         }, (err: ClientErrorResponse) => reject(err))
     })
   }
 
-  get user(): User {
+  get user(): IUser {
     return this._user;
   }
 
@@ -47,7 +47,7 @@ export class SelfService {
     return this._user.userType == UserType.Intern;
   }
 
-  setUser(user: User): void {
+  setUser(user: IUser): void {
     this._user = user;
   }
 

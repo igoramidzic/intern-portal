@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-title py-3">
+    <h3>Teams</h3>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr class="border-none">
+          <th class="link" scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Created</th>
+          <th scope="col">Members</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [routerLink]="['/teams/' + team._id]" class="hover" *ngFor="let team of teams"
+          style="cursor: pointer; outline: none">
+          <td>{{ team.name }}</td>
+          <td>{{ team.department }}</td>
+          <td>{{ team.createdAt | date }}</td>
+          <td>{{ team.members ? team.members.length : 0 }}</td>
+          <td>
+            <span *ngIf="team.deactivated">
+              <i class="danger fas fa-minus-circle"></i>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

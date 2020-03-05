@@ -8,6 +8,15 @@
         <li class="nav-item" *ngIf="selfService.user.setupCompleted">
           <a class="nav-link" [routerLink]="['']">Dashboard</a>
         </li>
+        <li class="nav-item" *ngIf="selfService.user.setupCompleted && selfService.isAdminOrManager">
+          <a class="nav-link" [routerLink]="['/interns']">Interns</a>
+        </li>
+        <li class="nav-item" *ngIf="selfService.user.setupCompleted && selfService.isAdminOrManager">
+          <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+        </li>
+        <li class="nav-item" *ngIf="selfService.user.setupCompleted && selfService.isAdminOrManager">
+          <a class="nav-link" [routerLink]="['/teams']">Teams</a>
+        </li>
         <li class="nav-item">
           <app-navbar-account-menu></app-navbar-account-menu>
         </li>

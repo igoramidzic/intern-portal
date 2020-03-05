@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
 
 @Component({
@@ -40,12 +40,12 @@ export class EmployeeAddFormComponent implements OnInit {
     this.errors = [];
     this.successes = [];
 
-    let user: User = {
+    let user: IUser = {
       ...this.addEmployeeForm.value
     }
 
     this.userService.addUser(user)
-      .then((user: User) => {
+      .then((user: IUser) => {
         this.successes = ["Successfully updated"];
         this.router.navigate(['employees/' + user._id])
       })

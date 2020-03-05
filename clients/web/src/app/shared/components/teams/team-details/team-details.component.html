@@ -1,0 +1,14 @@
+<div *ngIf="team">
+  <div class="d-flex align-items-start justify-content-between">
+    <div>
+      <h1>{{ team?.name }}</h1>
+    </div>
+
+    <div class="text-right">
+      <div class="d-flex align-items-center justify-content-end mb-3">
+        <app-team-details-menu [team]="team" (deleteTeamEmitter)="deleteTeam()">
+        </app-team-details-menu>
+      </div>
+    </div>
+  </div>
+</div>

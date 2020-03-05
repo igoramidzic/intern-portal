@@ -1,0 +1,14 @@
+<div class="row no-gutters h-100">
+  <div class="d-none d-md-block col-lg-6 col-md-8 mh-100 p-4 gray-2-bg" style="overflow-y: scroll;">
+    <div class="mb-2">
+      <app-team-add-side-card></app-team-add-side-card>
+    </div>
+    <app-teams-sidebar [teams]="teams"></app-teams-sidebar>
+  </div>
+  <div class="d-md-none col mh-100">
+    Hello World!
+  </div>
+  <div class="col-lg-18 col-md-16 mh-100" style="overflow-y: scroll;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

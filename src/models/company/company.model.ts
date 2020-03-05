@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { UserDocument, User } from "../user/user.model";
+import { TeamDocument } from "../team/team.model";
 
 export type Company = {
     name?: string,

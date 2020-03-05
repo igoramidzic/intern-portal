@@ -15,6 +15,7 @@ routes.use('/company', require('./company/company.controller'));
 routes.use('/self', require('./self/self.controller'));
 routes.use('/setup', require('./setup/setup.controller'));
 routes.use('/users', require('./user/user.controller'));
+routes.use('/teams', require('./team/team.controller'));
 
 routes.use('**', (req, res) => {
     res.status(404).json({

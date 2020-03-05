@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 
 @Component({
   selector: 'app-user-side-card',
@@ -7,7 +7,7 @@ import { User, UserType } from 'src/app/core/models/user/user.model';
 })
 export class UserSideCardComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() user: IUser;
 
   UserType = UserType;
 

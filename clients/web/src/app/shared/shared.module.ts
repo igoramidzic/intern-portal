@@ -27,7 +27,7 @@ import { UsersCardComponent } from './components/users/users-card/users-card.com
 import { UsersSidebarComponent } from './components/users/users-sidebar/users-sidebar.component';
 import { UserSideCardComponent } from './components/users/user-side-card/user-side-card.component';
 import { UserSmallBarComponent } from './components/users/user-small-bar/user-small-bar.component';
-import { NoUserSelectedComponent } from './components/no-user-selected/no-user-selected.component';
+import { NoUserSelectedComponent } from './components/users/no-user-selected/no-user-selected.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserDetailsMenuComponent } from './components/users/user-details/user-details-menu/user-details-menu.component';
 import { UserDetailsEditComponent } from './components/users/user-details/user-details-edit/user-details-edit.component';
@@ -36,6 +36,16 @@ import { MainSuccessAlertComponent } from './components/alerts/main-success-aler
 import { UserAddSideCardComponent } from './components/users/user-add-side-card/user-add-side-card.component';
 import { InternAddFormComponent } from './components/users/intern-add-form/intern-add-form.component';
 import { EmployeeAddFormComponent } from './components/users/employee-add-form/employee-add-form.component';
+import { TeamsCardComponent } from './components/teams/teams-card/teams-card.component';
+import { TeamAddFormComponent } from './components/teams/team-add-form/team-add-form.component';
+import { TeamsSidebarComponent } from './components/teams/teams-sidebar/teams-sidebar.component';
+import { TeamAddSideCardComponent } from './components/teams/team-add-side-card/team-add-side-card.component';
+import { TeamSideCardComponent } from './components/teams/team-side-card/team-side-card.component';
+import { TeamContentComponent } from './components/teams/team-content/team-content.component';
+import { TeamDetailsComponent } from './components/teams/team-details/team-details.component';
+import { TeamDetailsEditComponent } from './components/teams/team-details/team-details-edit/team-details-edit.component';
+import { TeamDetailsMenuComponent } from './components/teams/team-details/team-details-menu/team-details-menu.component';
+import { NoTeamSelectedComponent } from './components/teams/no-team-selected/no-team-selected.component';
 
 @NgModule({
     declarations: [
@@ -69,6 +79,16 @@ import { EmployeeAddFormComponent } from './components/users/employee-add-form/e
         UserAddSideCardComponent,
         InternAddFormComponent,
         EmployeeAddFormComponent,
+        TeamsCardComponent,
+        TeamAddFormComponent,
+        TeamsSidebarComponent,
+        TeamAddSideCardComponent,
+        TeamSideCardComponent,
+        TeamContentComponent,
+        TeamDetailsComponent,
+        TeamDetailsEditComponent,
+        TeamDetailsMenuComponent,
+        NoTeamSelectedComponent,
     ],
     imports: [
         CommonModule,
@@ -101,6 +121,16 @@ import { EmployeeAddFormComponent } from './components/users/employee-add-form/e
         UserAddSideCardComponent,
         InternAddFormComponent,
         EmployeeAddFormComponent,
+        TeamsCardComponent,
+        TeamAddFormComponent,
+        TeamsSidebarComponent,
+        TeamAddSideCardComponent,
+        TeamSideCardComponent,
+        TeamContentComponent,
+        TeamDetailsComponent,
+        TeamDetailsEditComponent,
+        TeamDetailsMenuComponent,
+        NoTeamSelectedComponent,
     ],
     providers: [],
     entryComponents: []

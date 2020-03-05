@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { SelfService } from 'src/app/services/self/self.service';
-import { User } from 'src/app/core/models/user/user.model';
+import { IUser } from 'src/app/core/models/user/user.model';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
 
 @Component({
@@ -37,7 +37,7 @@ export class InternLoginComponent implements OnInit {
     this.errors = [];
 
     this.authService.login(this.loginForm.value)
-      .then((user: User) => {
+      .then((user: IUser) => {
         this.router.navigate(['/']);
         this.selfService.setUser(user);
       })

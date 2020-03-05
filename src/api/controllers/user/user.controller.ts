@@ -1,9 +1,9 @@
 import { Router, Response, Request } from "express";
 import { User, UserDocument, UserType } from "../../../models/user/user.model";
 import { CompanyDocument } from "../../../models/company/company.model";
-import { getCompanyById, getCompanyUsersById, updateCompany } from "../../../api/handlers/company/company.handler";
+import { getCompanyById, updateCompany } from "../../../api/handlers/company/company.handler";
 import { ClientErrorResponse } from "../../../api/helpers/helpers";
-import { getUserByEmail, createNewUser, getUserById, updateUser, deleteUser } from "../../../api/handlers/user/user.handler";
+import { getUserByEmail, createNewUser, getUserById, updateUser, deleteUser, getUsers } from "../../../api/handlers/user/user.handler";
 
 const routes: Router = Router()
 
@@ -24,7 +24,7 @@ routes.get("/", async (req: Request, res: Response) => {
     if (!company)
         return res.status(500).json(new ClientErrorResponse(["Company not found."]));
 
-    let users: UserDocument[] = await getCompanyUsersById(company.id);
+    let users: UserDocument[] = await getUsers(company);
 
     if (userTypesToFilter) {
         let filters = userTypesToFilter.split(',')

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 import { ClientErrorResponse } from 'src/app/core/models/response/error-response.model';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,6 @@ export class InternAddFormComponent implements OnInit {
 
   isSubmitting: boolean = false;
   errors: string[];
-  successes: string[];
 
   addInternForm: FormGroup;
 
@@ -36,16 +35,14 @@ export class InternAddFormComponent implements OnInit {
 
     this.isSubmitting = true;
     this.errors = [];
-    this.successes = [];
 
-    let user: User = {
+    let user: IUser = {
       ...this.addInternForm.value,
       userType: UserType.Intern
     }
 
     this.userService.addUser(user)
-      .then((user: User) => {
-        this.successes = ["Successfully updated"];
+      .then((user: IUser) => {
         this.router.navigate(['interns/' + user._id])
       })
       .catch((err: ClientErrorResponse) => this.errors = err.errors)

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 import { SelfService } from 'src/app/services/self/self.service';
 
 @Component({
@@ -9,19 +9,19 @@ import { SelfService } from 'src/app/services/self/self.service';
 })
 export class UsersSidebarComponent implements OnInit {
 
-  @Input() users: User[];
+  @Input() users: IUser[];
   UserType = UserType
 
-  constructor(private selfService: SelfService) { }
+  constructor(public selfService: SelfService) { }
 
   ngOnInit() {
   }
 
-  get sortedUsers(): User[] {
+  get sortedUsers(): IUser[] {
     if (!this.users)
       return undefined;
 
-    let activeUsers: User[] = this.users.filter(u => !u.deactivated)
+    let activeUsers: IUser[] = this.users.filter(u => !u.deactivated)
       .sort((a, b) => {
         if (a.lastName > b.lastName) return 1;
         if (a.lastName < b.lastName) return -1;
@@ -29,7 +29,7 @@ export class UsersSidebarComponent implements OnInit {
         if (a.firstName > b.firstName) return 1;
         if (a.firstName < b.firstName) return -1;
       });
-    let deactivatedUsers: User[] = this.users.filter(u => u.deactivated)
+    let deactivatedUsers: IUser[] = this.users.filter(u => u.deactivated)
       .sort((a, b) => {
         if (a.lastName > b.lastName) return 1;
         if (a.lastName < b.lastName) return -1;

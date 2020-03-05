@@ -1,6 +1,6 @@
 import { Company } from '../company/company.model';
 
-export type User = {
+export type IUser = {
     _id?: string;
     firstName?: string;
     lastName?: string;

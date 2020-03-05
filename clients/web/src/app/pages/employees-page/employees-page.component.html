@@ -1,5 +1,8 @@
 <div class="row no-gutters h-100">
-  <div class="d-none d-md-block col-lg-6 col-md-8 mh-100" style="overflow-y: scroll;">
+  <div class="d-none d-md-block col-lg-6 col-md-8 mh-100 p-4 gray-2-bg" style="overflow-y: scroll;">
+    <div class="mb-2" *ngIf="selfService.isAdmin">
+      <app-user-add-side-card [userType]="UserType.Manager"></app-user-add-side-card>
+    </div>
     <app-users-sidebar [users]="employees"></app-users-sidebar>
   </div>
   <div class="d-md-none col mh-100">

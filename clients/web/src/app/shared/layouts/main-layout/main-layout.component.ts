@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { User, UserType } from 'src/app/core/models/user/user.model';
+import { IUser, UserType } from 'src/app/core/models/user/user.model';
 import { SelfService } from 'src/app/services/self/self.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { SelfService } from 'src/app/services/self/self.service';
 })
 export class MainLayoutComponent implements OnInit {
 
-  user: User;
+  user: IUser;
   UserType = UserType;
 
   constructor(public authService: AuthService, public selfService: SelfService, private router: Router) { }

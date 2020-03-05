@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from 'src/app/core/models/user/user.model';
+import { IUser } from 'src/app/core/models/user/user.model';
 
 @Component({
   selector: 'app-user-content',
@@ -8,15 +8,15 @@ import { User } from 'src/app/core/models/user/user.model';
 })
 export class UserContentComponent implements OnInit {
 
-  @Input() user: User;
-  @Output() userUpdatedEmitter: EventEmitter<User> = new EventEmitter();
+  @Input() user: IUser;
+  @Output() userUpdatedEmitter: EventEmitter<IUser> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  userUpdated(user: User): void {
+  userUpdated(user: IUser): void {
     this.userUpdatedEmitter.emit(user);
   }
 }

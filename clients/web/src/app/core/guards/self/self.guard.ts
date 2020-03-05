@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from
 import { Observable } from 'rxjs';
 import { SelfService } from 'src/app/services/self/self.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { User } from '../../models/user/user.model';
+import { IUser } from '../../models/user/user.model';
 import { ClientErrorResponse } from '../../models/response/error-response.model';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class SelfGuard implements CanActivate {
 
       // Update the user from server
       this.selfService.getSelf()
-        .then((user: User) => {
+        .then((user: IUser) => {
           resolve(true);
         })
         .catch((res: ClientErrorResponse) => {

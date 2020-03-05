@@ -1,9 +1,8 @@
 import { Router, Response, Request } from "express";
-import { User, UserType, UserDocument } from "../../../models/user/user.model";
+import { User } from "../../../models/user/user.model";
 import { ClientErrorResponse, serverError, asyncHandler } from "../../../api/helpers/helpers";
 import { Company, CompanyDocument } from "../../../models/company/company.model";
-import { createNewCompany, getCompanyById, updateCompany } from "../../../api/handlers/company/company.handler";
-import { getUserById } from "../../../api/handlers/user/user.handler";
+import { getCompanyById, updateCompany } from "../../../api/handlers/company/company.handler";
 
 const routes: Router = Router()
 

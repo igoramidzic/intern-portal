@@ -1,4 +1,5 @@
 import { User, UserDocument } from "../../../models/user/user.model";
+import { Company, CompanyDocument } from "../../../models/company/company.model";
 
 export let createNewUser = (user: User): Promise<UserDocument> =>
     new Promise((resolve, reject) => {
@@ -53,4 +54,24 @@ export let getUserByEmail = (email: string): Promise<UserDocument> =>
             .catch(error => {
                 reject(error);
             })
+    });
+
+export let getUsers = (company: CompanyDocument) =>
+    new Promise<UserDocument[]>(async (resolve, reject) => {
+        try {
+            company.populate({
+                path: 'users',
+                populate: {
+                    path: 'user'
+                }
+            }).execPopulate()
+                .then((company: CompanyDocument) => {
+                    resolve(company.users);
+                })
+                .catch(() => {
+                    reject();
+                })
+        } catch (e) {
+            reject(e)
+        }
     });

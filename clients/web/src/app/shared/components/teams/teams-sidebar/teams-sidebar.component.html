@@ -1,0 +1,5 @@
+<div class="" style="min-height: 100%;" *ngIf="teams">
+  <div class="mb-2" *ngFor="let team of sortedTeams">
+    <app-team-side-card [team]="team"></app-team-side-card>
+  </div>
+</div>
