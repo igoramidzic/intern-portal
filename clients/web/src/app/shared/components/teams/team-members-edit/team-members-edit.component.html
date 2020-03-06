@@ -1,0 +1,38 @@
+<div class="form-card">
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr class="border-none">
+          <th scope="col"></th>
+          <th scope="col">User Type</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover" *ngFor="let user of usersSorted" style="cursor: pointer; outline: none"
+          (click)="amendUserToMembers(user)">
+          <th>
+            <input [ngModel]="userIsInTeam(user)" type="checkbox" aria-label="Checkbox for following text input">
+          </th>
+          <th>
+            <app-user-type-badge [userType]="user.userType" [size]="'sm'"></app-user-type-badge>
+          </th>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td><span class="font-weight-bold">{{ user.email }}</span></td>
+          <td>
+            <span *ngIf="user.deactivated">
+              <i class="danger fas fa-minus-circle"></i>
+            </span>
+            <span *ngIf="!user.deactivated && user.setupCompleted">
+              <i class="green fas fa-check-circle"></i>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

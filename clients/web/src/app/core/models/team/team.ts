@@ -5,7 +5,7 @@ export type ITeam = {
     name?: string;
     department?: string;
     deactivated?: boolean;
-    members?: IUser[];
+    members?: string[];
     createdAt?: Date;
     updatedAt?: Date;
 }

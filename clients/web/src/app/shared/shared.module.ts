@@ -46,6 +46,7 @@ import { TeamDetailsComponent } from './components/teams/team-details/team-detai
 import { TeamDetailsEditComponent } from './components/teams/team-details/team-details-edit/team-details-edit.component';
 import { TeamDetailsMenuComponent } from './components/teams/team-details/team-details-menu/team-details-menu.component';
 import { NoTeamSelectedComponent } from './components/teams/no-team-selected/no-team-selected.component';
+import { TeamMembersEditComponent } from './components/teams/team-members-edit/team-members-edit.component';
 
 @NgModule({
     declarations: [
@@ -89,6 +90,7 @@ import { NoTeamSelectedComponent } from './components/teams/no-team-selected/no-
         TeamDetailsEditComponent,
         TeamDetailsMenuComponent,
         NoTeamSelectedComponent,
+        TeamMembersEditComponent,
     ],
     imports: [
         CommonModule,
@@ -131,6 +133,7 @@ import { NoTeamSelectedComponent } from './components/teams/no-team-selected/no-
         TeamDetailsEditComponent,
         TeamDetailsMenuComponent,
         NoTeamSelectedComponent,
+        TeamMembersEditComponent,
     ],
     providers: [],
     entryComponents: []
