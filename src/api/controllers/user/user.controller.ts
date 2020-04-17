@@ -14,10 +14,6 @@ routes.get("/", async (req: Request, res: Response) => {
     const user: User = req.user;
     const userTypesToFilter: string = req.query.userTypes;
 
-    if (user.userType != UserType.Admin && user.userType != UserType.Manager)
-        return res.status(403).json(
-            new ClientErrorResponse(["You do not have sufficient permissions."]));
-
     // Get company
     const company: CompanyDocument = await getCompanyById(user.company);
 

@@ -14,11 +14,12 @@ import { SelfGuard } from 'src/app/core/guards/self/self.guard';
 import { SetupCompletedGuard } from 'src/app/core/guards/setup-completed/setup-completed.guard';
 import { SetupNotCompletedGuard } from 'src/app/core/guards/setup-not-completed/setup-not-completed.guard';
 import { SetupLayoutComponent } from './setup-layout/setup-layout.component';
+import { CompanyGuard } from 'src/app/core/guards/company/company.guard';
 
 export const LAYOUTS_ROUTES: Routes = [
     {
         path: '',
-        canActivate: [AuthGuard, SelfGuard],
+        canActivate: [AuthGuard, SelfGuard, CompanyGuard],
         children: [
             {
                 path: '',
@@ -30,7 +31,7 @@ export const LAYOUTS_ROUTES: Routes = [
     },
     {
         path: 'setup',
-        canActivate: [AuthGuard, SelfGuard],
+        canActivate: [AuthGuard, SelfGuard, CompanyGuard],
         children: [
             {
                 path: '',
