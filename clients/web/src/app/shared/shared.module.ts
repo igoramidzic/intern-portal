@@ -50,6 +50,8 @@ import { TeamMembersEditComponent } from './components/teams/team-members-edit/t
 import { WelcomeInternComponent } from './components/welcome-intern/welcome-intern.component';
 import { CompanyInfoSimpleComponent } from './components/company-info-simple/company-info-simple.component';
 import { WelcomeEmployeeComponent } from './components/welcome-employee/welcome-employee.component';
+import { ActiveAccountIndicatorComponent } from './components/active-account-indicator/active-account-indicator.component';
+import { FellowInternsListComponent } from './components/fellow-interns-list/fellow-interns-list.component';
 
 @NgModule({
     declarations: [
@@ -97,6 +99,8 @@ import { WelcomeEmployeeComponent } from './components/welcome-employee/welcome-
         WelcomeInternComponent,
         CompanyInfoSimpleComponent,
         WelcomeEmployeeComponent,
+        ActiveAccountIndicatorComponent,
+        FellowInternsListComponent,
     ],
     imports: [
         CommonModule,
@@ -143,6 +147,8 @@ import { WelcomeEmployeeComponent } from './components/welcome-employee/welcome-
         WelcomeInternComponent,
         CompanyInfoSimpleComponent,
         WelcomeEmployeeComponent,
+        ActiveAccountIndicatorComponent,
+        FellowInternsListComponent,
     ],
     providers: [],
     entryComponents: []

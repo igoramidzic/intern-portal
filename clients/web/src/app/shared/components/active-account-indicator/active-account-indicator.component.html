@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center justify-content-center">
+  <span class="mr-2 warning" *ngIf="selfService.user.deactivated" style="font-size: 18px">
+    <i class="fas fa-exclamation-circle"></i>
+  </span>
+  <span class="mr-2 green" *ngIf="!selfService.user.deactivated" style="font-size: 18px">
+    <i class="fas fa-check-circle"></i>
+  </span>
+  Account {{ selfService.user.deactivated ? 'Deactivated' : 'Active' }}
+</div>

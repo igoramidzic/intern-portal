@@ -1,1 +1,3 @@
 <h3>Welcome, <span class="font-weight-bold">{{ selfService.fullName() }}</span></h3>
+<p class="hint mb-2">Joined {{ selfService.user.createdAt | date }}</p>
+<app-user-type-badge [userType]="selfService.userType" [size]="'md'"></app-user-type-badge>

@@ -11,6 +11,7 @@ import { UserType } from '../core/models/user/user.model';
 import { TeamsPageComponent } from './teams-page/teams-page.component';
 import { TeamsContentPageComponent } from './teams-page/teams-content-page/teams-content-page.component';
 import { TeamsAddPageComponent } from './teams-page/teams-add-page/teams-add-page.component';
+import { CompanyGuard } from '../core/guards/company/company.guard';
 
 export const PAGES_ROUTES: Routes = [
     {
@@ -19,12 +20,13 @@ export const PAGES_ROUTES: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardPageComponent
+        component: DashboardPageComponent,
+        canActivate: [CompanyGuard]
     },
     {
         path: 'interns',
         component: InternsPageComponent,
-        canActivate: [UserTypeGuard],
+        canActivate: [UserTypeGuard, CompanyGuard],
         data: { userTypesNotAllowed: [UserType.Intern] },
         children: [
             {
@@ -44,7 +46,7 @@ export const PAGES_ROUTES: Routes = [
     {
         path: 'employees',
         component: EmployeesPageComponent,
-        canActivate: [UserTypeGuard],
+        canActivate: [UserTypeGuard, CompanyGuard],
         data: { userTypesNotAllowed: [UserType.Intern] },
         children: [
             {
@@ -66,7 +68,7 @@ export const PAGES_ROUTES: Routes = [
     {
         path: 'teams',
         component: TeamsPageComponent,
-        canActivate: [UserTypeGuard],
+        canActivate: [UserTypeGuard, CompanyGuard],
         data: { userTypesNotAllowed: [UserType.Intern] },
         children: [
             {

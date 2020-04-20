@@ -19,7 +19,7 @@ import { CompanyGuard } from 'src/app/core/guards/company/company.guard';
 export const LAYOUTS_ROUTES: Routes = [
     {
         path: '',
-        canActivate: [AuthGuard, SelfGuard, CompanyGuard],
+        canActivate: [AuthGuard, SelfGuard],
         children: [
             {
                 path: '',
@@ -31,7 +31,7 @@ export const LAYOUTS_ROUTES: Routes = [
     },
     {
         path: 'setup',
-        canActivate: [AuthGuard, SelfGuard, CompanyGuard],
+        canActivate: [AuthGuard, SelfGuard],
         children: [
             {
                 path: '',

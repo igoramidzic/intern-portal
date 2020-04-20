@@ -1,7 +1,9 @@
-<div class="p-4 mb-2 gray-2-bg">
-  <div class="d-flex align-items-center justify-content-between">
-
+<div class="p-3 mb-2 gray-2-bg d-flex align-items-center justify-content-between">
+  <div>
+    <app-company-info-simple></app-company-info-simple>
+    <app-welcome-employee></app-welcome-employee>
   </div>
+  <app-active-account-indicator></app-active-account-indicator>
 </div>
 
 <div class="container-fluid py-4">
@@ -11,10 +13,6 @@
     </div>
     <div class="col-lg-12 col-md-16 col-24">
       <app-teams-card [teams]="teams"></app-teams-card>
-    </div>
-    <div class="col-lg-12 col-md-16 col-24">
-      <app-company-info-simple></app-company-info-simple>
-      <app-welcome-employee></app-welcome-employee>
     </div>
   </div>
 
@@ -26,10 +24,7 @@
       Hello world!
     </div>
     <div class="col-5">
-      <div class="mb-2">
-        <app-company-info-simple></app-company-info-simple>
-      </div>
-      <app-welcome-intern></app-welcome-intern>
+      <app-fellow-interns-list></app-fellow-interns-list>
     </div>
   </div>
 </div>

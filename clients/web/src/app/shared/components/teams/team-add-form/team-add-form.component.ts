@@ -23,7 +23,8 @@ export class TeamAddFormComponent implements OnInit {
 
   ngOnInit() {
     this.addTeamForm = this.fb.group({
-      name: new FormControl('', [Validators.required])
+      name: new FormControl('', [Validators.required]),
+      department: new FormControl('')
     })
   }
 

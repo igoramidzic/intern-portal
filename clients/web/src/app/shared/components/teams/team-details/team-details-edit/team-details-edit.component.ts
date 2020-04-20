@@ -25,7 +25,8 @@ export class TeamDetailsEditComponent implements OnInit {
 
   ngOnInit() {
     this.updateTeamForm = this.fb.group({
-      name: new FormControl(this.team ? this.team.name : '', [Validators.required])
+      name: new FormControl(this.team ? this.team.name : '', [Validators.required]),
+      department: new FormControl(this.team ? this.team.department : '')
     })
   }
 
@@ -46,6 +47,7 @@ export class TeamDetailsEditComponent implements OnInit {
   setFormValues(team: ITeam): void {
     if (!team) return;
     this.updateTeamForm.controls['name'].setValue(team.name);
+    this.updateTeamForm.controls['department'].setValue(team.department);
   }
 
   onUpdateTeam(): void {
