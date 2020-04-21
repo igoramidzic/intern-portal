@@ -58,6 +58,7 @@ import { SimpleTeamCardComponent } from './components/simple-team-card/simple-te
 import { InternTeamDetailsComponent } from './components/intern-team-details/intern-team-details.component';
 import { TeamMessagesListComponent } from './components/team-messages-list/team-messages-list.component';
 import { TeamMessageItemComponent } from './components/team-message-item/team-message-item.component';
+import { AddTeamMessageFormComponent } from './components/add-team-message-form/add-team-message-form.component';
 
 @NgModule({
     declarations: [
@@ -113,6 +114,7 @@ import { TeamMessageItemComponent } from './components/team-message-item/team-me
         InternTeamDetailsComponent,
         TeamMessagesListComponent,
         TeamMessageItemComponent,
+        AddTeamMessageFormComponent,
     ],
     imports: [
         CommonModule,
@@ -163,6 +165,7 @@ import { TeamMessageItemComponent } from './components/team-message-item/team-me
         FellowInternsListComponent,
         InternTeamsListComponent,
         InternTeamDetailsComponent,
+        AddTeamMessageFormComponent
     ],
     providers: [],
     entryComponents: []

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team/team.service';
 import { ITeam } from 'src/app/core/models/team/team';
+import { IUser } from 'src/app/core/models/user/user.model';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-teams-content-page',
@@ -11,11 +13,15 @@ import { ITeam } from 'src/app/core/models/team/team';
 export class TeamsContentPageComponent implements OnInit {
 
   teamId: string;
+  users: IUser[];
 
   constructor(private teamService: TeamService, private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getUsers()
+      .then((users: IUser[]) => this.users = users)
+      .catch(() => { });
     this.route.params.subscribe((params) => {
       this.teamId = params.teamId;
     })

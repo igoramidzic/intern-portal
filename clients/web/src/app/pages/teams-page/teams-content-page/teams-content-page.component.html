@@ -5,6 +5,7 @@
   <app-no-team-selected *ngIf="!selectedTeam"></app-no-team-selected>
 </div>
 <div class="p-4">
-  <app-team-content *ngIf="selectedTeam" [team]="selectedTeam" (teamUpdatedEmitter)="teamUpdated($event)">
+  <app-team-content *ngIf="selectedTeam" [team]="selectedTeam" [users]="users"
+    (teamUpdatedEmitter)="teamUpdated($event)">
   </app-team-content>
 </div>

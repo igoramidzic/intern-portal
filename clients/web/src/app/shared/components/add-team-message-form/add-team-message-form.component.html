@@ -1,0 +1,18 @@
+<h3 class="mb-2">Add a message to the team</h3>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="mb-4">
+    <label class="mb-2" for="message">Message</label>
+    <textarea type="text" name="message" rows="2" [(ngModel)]="message.message"
+      class="textarea mb-2 show-errors input-light"></textarea>
+
+    <div class="mt-3">
+      <app-main-error-alert [errors]="errors"></app-main-error-alert>
+      <app-main-success-alert [successes]="successes"></app-main-success-alert>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="isSubmitting">
+    Send
+  </button>
+</form>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ITeam } from 'src/app/core/models/team/team';
+import { IUser } from 'src/app/core/models/user/user.model';
+import { IMessage } from 'src/app/core/models/message/messages';
 
 @Component({
   selector: 'app-team-content',
@@ -8,6 +10,7 @@ import { ITeam } from 'src/app/core/models/team/team';
 })
 export class TeamContentComponent implements OnInit {
 
+  @Input() users: IUser[];
   @Input() team: ITeam;
   @Output() teamUpdatedEmitter: EventEmitter<ITeam> = new EventEmitter();
 
@@ -20,4 +23,7 @@ export class TeamContentComponent implements OnInit {
     this.teamUpdatedEmitter.emit(team);
   }
 
+  messageAdded(message: IMessage): void {
+    this.team.messages.push(message);
+  }
 }

@@ -54,6 +54,15 @@ export class TeamService {
     })
   }
 
+  addMessage(teamId: string, message: IMessage): Promise<IMessage> {
+    return new Promise((resolve, reject) => {
+      this.http.post(environment.apiBase + APIs.Teams + "/" + teamId + "/messages", message)
+        .subscribe((message: IMessage) => {
+          resolve(message);
+        }, (err) => reject(err.error))
+    })
+  }
+
   private removeTeamFromTeams(team: ITeam): void {
     let index: number = this._teams.findIndex(t => t._id == team._id);
     if (index != -1)

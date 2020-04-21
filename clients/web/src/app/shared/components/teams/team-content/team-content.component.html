@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <app-team-details-edit [team]="team" (teamUpdatedEmitter)="teamUpdated($event)"></app-team-details-edit>
+    <app-team-details-edit class="d-block mb-5" [team]="team" (teamUpdatedEmitter)="teamUpdated($event)">
+    </app-team-details-edit>
+    <app-add-team-message-form [team]="team" (messageAddedEmitter)="messageAdded($event)" class="d-block mb-4">
+    </app-add-team-message-form>
+    <app-team-messages-list [users]="users" [messages]="team.messages"></app-team-messages-list>
   </div>
   <div class="col-md-12">
     <app-team-members-edit [team]="team"></app-team-members-edit>

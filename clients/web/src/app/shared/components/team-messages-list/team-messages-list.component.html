@@ -1,8 +1,10 @@
 <h3>Team Messages</h3>
 <p class="hint mb-4">Read important updates from your team.</p>
 
-<div class="mb-4" *ngFor="let message of _messages">
-  <app-team-message-item [message]="message" [user]="getMessageOwner(message)"></app-team-message-item>
+<div *ngIf="users">
+  <div class="mb-4" *ngFor="let message of _messages">
+    <app-team-message-item [message]="message" [user]="getMessageOwner(message)"></app-team-message-item>
+  </div>
 </div>
 
 <div *ngIf="_messages?.length == 0">

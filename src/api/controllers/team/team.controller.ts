@@ -178,7 +178,7 @@ routes.post("/:id/messages", async (req: Request, res: Response) => {
         res.status(500).json(new ClientErrorResponse(["Something went wrong."]))
     }
 
-    res.status(200).send(team);
+    res.status(200).send(messageDoc);
 });
 
 module.exports = routes;
