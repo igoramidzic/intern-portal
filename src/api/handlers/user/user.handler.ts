@@ -1,5 +1,5 @@
 import { User, UserDocument } from "../../../models/user/user.model";
-import { Company, CompanyDocument } from "../../../models/company/company.model";
+import { CompanyDocument } from "../../../models/company/company.model";
 
 export let createNewUser = (user: User): Promise<UserDocument> =>
     new Promise((resolve, reject) => {

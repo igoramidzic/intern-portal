@@ -6,6 +6,7 @@ import { Employee } from 'src/app/core/models/employee/employee';
 import { Intern } from 'src/app/core/models/intern/intern';
 import { TeamService } from 'src/app/services/team/team.service';
 import { ITeam } from 'src/app/core/models/team/team';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -17,26 +18,38 @@ export class DashboardPageComponent implements OnInit {
   users: IUser[];
   teams: ITeam[];
   UserType = UserType;
+  selectedTeam: ITeam;
 
   constructor(private userService: UserService, public selfService: SelfService,
-    private teamService: TeamService) { }
+    private teamService: TeamService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getUsers();
-    this.getTeams();
-  }
-
-  getUsers(): void {
-    if (this.selfService.isAdminOrManager)
-      this.userService.getUsers()
-        .then((users: IUser[]) => this.users = users)
-        .catch((err) => console.log(err))
-  }
-
-  getTeams(): void {
-    if (this.selfService.isAdminOrManager)
+    Promise.all([
+      this.userService.getUsers(),
       this.teamService.getTeams()
-        .then((teams: ITeam[]) => this.teams = teams)
-        .catch((err) => console.log(err))
+    ])
+      .then((res) => {
+        this.users = this.userService.sortUsersByName(res[0]);
+        this.teams = this.teamService.sortTeamsByName(res[1]);
+
+        this.route.queryParams.subscribe((params) => {
+          if (params.team)
+            this.selectedTeam = this.fintTeamById(params.team);
+          else
+            this.selectedTeam = null;
+        })
+      })
+      .catch(() => {
+      })
+  }
+
+  fintTeamById(id: string): ITeam {
+    if (this.teams)
+      return this.teams.find(t => t._id == id);
+  }
+
+  get interns(): Intern[] {
+    if (this.users)
+      return this.users.filter(u => u.userType == UserType.Intern);
   }
 }

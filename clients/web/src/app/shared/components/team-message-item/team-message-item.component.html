@@ -1,0 +1,9 @@
+<div class="mb-2 d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <h3 class="font-weight-bold mr-3">{{ user.firstName }} {{ user.lastName }}</h3>
+    <p class="hint">{{ message.createdAt | date : 'h:mm a E dd MMM'}}</p>
+  </div>
+  <app-user-type-badge [userType]="user.userType" [size]="'sm'"></app-user-type-badge>
+</div>
+
+<h3>{{ message.message }}</h3>

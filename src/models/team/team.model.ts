@@ -1,11 +1,12 @@
-import mongoose, { Mongoose, MongooseDocument } from "mongoose";
+import mongoose from "mongoose";
 import { UserDocument, User } from "../user/user.model";
-import { CompanyDocument } from "../company/company.model";
+import { MessageDocument, Message } from "../message/message.model";
 
 export type Team = {
     _id?: string;
     name?: string;
     members?: User[];
+    messages?: Message[];
     company?: string;
 
     deactivated?: boolean;
@@ -15,6 +16,7 @@ export type Team = {
 export type TeamDocument = mongoose.Document & {
     name: string;
     members: UserDocument[];
+    messages: MessageDocument[];
     company: mongoose.Types.ObjectId;
 
     deactivated?: boolean;
@@ -26,7 +28,8 @@ const teamSchema = new mongoose.Schema({
     department: { type: String, required: false },
     deactivated: { type: Boolean, required: false },
     company: { type: mongoose.Types.ObjectId, ref: 'Company', required: false },
-    members: [{ type: mongoose.Types.ObjectId, ref: 'User' }]
+    members: [{ type: mongoose.Types.ObjectId, ref: 'User' }],
+    messages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }]
 }, { timestamps: true });
 
 teamSchema.methods.toJSON = function () {

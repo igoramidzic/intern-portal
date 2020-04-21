@@ -5,6 +5,8 @@ import { TeamDocument, Team } from "../../../models/team/team.model";
 import { getTeams, createNewTeam, getTeamById, getTeamByName, updateTeam, deleteTeam } from "../../../api/handlers/team/team.handler";
 import { CompanyDocument } from "../../../models/company/company.model";
 import { getCompanyById, updateCompany } from "../../../api/handlers/company/company.handler";
+import { Message, MessageDocument } from "../../../models/message/message.model";
+import { createNewMessage } from "../../../api/handlers/message/message.handler";
 
 const routes: Router = Router()
 
@@ -135,6 +137,48 @@ routes.delete("/:id", async (req: Request, res: Response) => {
     } catch (e) {
         return res.status(503).json(new ClientErrorResponse(["Something went wrong."]));
     }
+});
+
+/**
+ * Add message to team
+ */
+routes.post("/:id/messages", async (req: Request, res: Response) => {
+    const user: User = req.user;
+    const message: Message = req.body;
+
+    if (user.userType != UserType.Admin && user.userType != UserType.Manager)
+        return res.status(403).json(
+            new ClientErrorResponse(["You do not have sufficient permissions."]));
+
+    message.message = message.message == null ? null : message.message.trim();
+
+    const errors: string[] = [];
+
+    if (!message.message) errors.push("Message cannot be empty.")
+
+    if (errors.length > 0)
+        return res.status(400).json(new ClientErrorResponse(errors));
+
+    // Get team
+    const team: TeamDocument = await getTeamById(req.params['id']);
+
+    if (!team)
+        return res.status(500).json(new ClientErrorResponse(["Team not found."]));
+
+    message.team = team.id;
+    message.user = user._id;
+
+    let messageDoc: MessageDocument = await createNewMessage(message);
+
+    team.messages.push(messageDoc);
+
+    try {
+        await updateTeam(team.id, team);
+    } catch (err) {
+        res.status(500).json(new ClientErrorResponse(["Something went wrong."]))
+    }
+
+    res.status(200).send(team);
 });
 
 module.exports = routes;

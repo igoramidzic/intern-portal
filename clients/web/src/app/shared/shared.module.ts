@@ -52,6 +52,12 @@ import { CompanyInfoSimpleComponent } from './components/company-info-simple/com
 import { WelcomeEmployeeComponent } from './components/welcome-employee/welcome-employee.component';
 import { ActiveAccountIndicatorComponent } from './components/active-account-indicator/active-account-indicator.component';
 import { FellowInternsListComponent } from './components/fellow-interns-list/fellow-interns-list.component';
+import { SimpleUserCardComponent } from './components/simple-user-card/simple-user-card.component';
+import { InternTeamsListComponent } from './components/intern-teams-list/intern-teams-list.component';
+import { SimpleTeamCardComponent } from './components/simple-team-card/simple-team-card.component';
+import { InternTeamDetailsComponent } from './components/intern-team-details/intern-team-details.component';
+import { TeamMessagesListComponent } from './components/team-messages-list/team-messages-list.component';
+import { TeamMessageItemComponent } from './components/team-message-item/team-message-item.component';
 
 @NgModule({
     declarations: [
@@ -101,6 +107,12 @@ import { FellowInternsListComponent } from './components/fellow-interns-list/fel
         WelcomeEmployeeComponent,
         ActiveAccountIndicatorComponent,
         FellowInternsListComponent,
+        SimpleUserCardComponent,
+        InternTeamsListComponent,
+        SimpleTeamCardComponent,
+        InternTeamDetailsComponent,
+        TeamMessagesListComponent,
+        TeamMessageItemComponent,
     ],
     imports: [
         CommonModule,
@@ -149,6 +161,8 @@ import { FellowInternsListComponent } from './components/fellow-interns-list/fel
         WelcomeEmployeeComponent,
         ActiveAccountIndicatorComponent,
         FellowInternsListComponent,
+        InternTeamsListComponent,
+        InternTeamDetailsComponent,
     ],
     providers: [],
     entryComponents: []

@@ -1,5 +1,4 @@
 import { Team, TeamDocument } from "../../../models/team/team.model";
-import { CompanyDocument } from "../../../models/company/company.model";
 
 export let createNewTeam = (team: Team): Promise<TeamDocument> =>
     new Promise((resolve, reject) => {
@@ -36,7 +35,9 @@ export let deleteTeam = (teamId: string): Promise<TeamDocument> =>
 
 export let getTeamById = (id: string): Promise<TeamDocument> =>
     new Promise((resolve, reject) => {
-        Team.findOne({ _id: id })
+        Team.findOne({ _id: id }).populate({
+            path: 'messages'
+        })
             .then((team: TeamDocument) => {
                 resolve(team);
             })
@@ -47,7 +48,9 @@ export let getTeamById = (id: string): Promise<TeamDocument> =>
 
 export let getTeamByName = (name: string): Promise<TeamDocument> =>
     new Promise((resolve, reject) => {
-        Team.findOne({ name })
+        Team.findOne({ name }).populate({
+            path: 'messages'
+        })
             .then((team: TeamDocument) => {
                 resolve(team);
             })
@@ -61,6 +64,8 @@ export let getTeams = (companyId: string) =>
         try {
             Team.find({ company: companyId }).populate({
                 path: 'teams'
+            }).populate({
+                path: 'messages'
             })
                 .then((teams: TeamDocument[]) => {
                     resolve(teams)
@@ -68,13 +73,6 @@ export let getTeams = (companyId: string) =>
                 .catch((e) => {
                     reject(e)
                 })
-            // .execPopulate()
-            //     .then((company: CompanyDocument) => {
-            //         resolve(company.teams);
-            //     })
-            //     .catch(() => {
-            //         reject();
-            //     })
         } catch (e) {
             reject(e)
         }

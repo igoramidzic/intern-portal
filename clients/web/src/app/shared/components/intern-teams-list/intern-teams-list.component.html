@@ -1,0 +1,10 @@
+<h3>Teams</h3>
+<p class="hint mb-3">See your team information.</p>
+
+<div class="mb-2" *ngFor="let team of teams">
+  <app-simple-team-card [team]="team"></app-simple-team-card>
+</div>
+
+<div *ngIf="!teams">
+  Loading teams...
+</div>

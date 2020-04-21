@@ -63,4 +63,14 @@ export class UserService {
   get users(): IUser[] {
     return this._users;
   }
+
+  sortUsersByName(users: IUser[]): IUser[] {
+    return users.sort((a, b) => {
+      if (a.lastName > b.lastName) return 1;
+      if (a.lastName < b.lastName) return -1;
+
+      if (a.firstName > b.firstName) return 1;
+      if (a.firstName < b.firstName) return -1;
+    });
+  }
 }

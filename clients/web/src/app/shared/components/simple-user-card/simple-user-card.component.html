@@ -1,0 +1,9 @@
+<a class="form-card hover" [href]="'mailto:' + user.email" target="_blank">
+  <div class="card-body">
+    <div class="d-flex align-items-centern justify-content-between">
+      <h3 class="font-weight-bold">{{ user.firstName}} {{ user.lastName}}</h3>
+      <app-user-type-badge [userType]="user.userType" [size]="'sm'"></app-user-type-badge>
+    </div>
+    <p>{{ user.email }}</p>
+  </div>
+</a>

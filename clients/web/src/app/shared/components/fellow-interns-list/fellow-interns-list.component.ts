@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserType } from 'src/app/core/models/user/user.model';
+import { Intern } from 'src/app/core/models/intern/intern';
 
 @Component({
   selector: 'app-fellow-interns-list',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FellowInternsListComponent implements OnInit {
 
+  @Input() interns: Intern[];
+  UserType = UserType;
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

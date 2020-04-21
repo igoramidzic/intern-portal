@@ -3,6 +3,7 @@ import { ITeam } from 'src/app/core/models/team/team';
 import { HttpClient } from '@angular/common/http';
 import { APIs } from 'src/app/core/utils/api-urls';
 import { environment } from 'src/environments/environment';
+import { IMessage } from 'src/app/core/models/message/messages';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +62,19 @@ export class TeamService {
 
   get teams(): ITeam[] {
     return this._teams;
+  }
+
+  sortTeamsByName(teams: ITeam[]): ITeam[] {
+    return teams.sort((a, b) => {
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
+
+      if (a.department > b.department) return 1;
+      if (a.department < b.department) return -1;
+    });
+  }
+
+  sortTeamMessagesByDate(messages: IMessage[]): IMessage[] {
+    return messages.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1)
   }
 }

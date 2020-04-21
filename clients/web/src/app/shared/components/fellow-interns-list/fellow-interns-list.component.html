@@ -1,2 +1,14 @@
 <h3>Fellow Interns</h3>
-<p class="hint">Connect with your peers.</p>
+<p class="hint mb-3">Connect with your peers.</p>
+
+<div *ngFor="let intern of interns" class="mb-2">
+  <app-simple-user-card [user]="intern"></app-simple-user-card>
+</div>
+
+<div *ngIf="!interns">
+  Loading interns...
+</div>
+
+<div *ngIf="interns?.length == 0">
+  <h2 class="hint">No Interns</h2>
+</div>

@@ -17,14 +17,14 @@
   </div>
 
   <div class="row" *ngIf="selfService.isIntern">
-    <div class="col-5">
-      Hello world!
+    <div class="col-xl-5 col-lg-6 col col-24 mb-4">
+      <app-intern-teams-list [interns]="interns" [teams]="teams"></app-intern-teams-list>
     </div>
-    <div class="col-14">
-      Hello world!
+    <div class="col-xl-14 col-lg-12 col-24 mb-5">
+      <app-intern-team-details [team]="selectedTeam" [users]="users"></app-intern-team-details>
     </div>
-    <div class="col-5">
-      <app-fellow-interns-list></app-fellow-interns-list>
+    <div class="col-xl-5 col-lg-6 col-24">
+      <app-fellow-interns-list [interns]="interns"></app-fellow-interns-list>
     </div>
   </div>
 </div>

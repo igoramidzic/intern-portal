@@ -1,0 +1,13 @@
+<a class="form-card hover" [routerLink]="['/dashboard']" [queryParams]="{ team: team._id }"
+  [routerLinkActive]="'active'">
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-between">
+      <h3 class="font-weight-bold">{{ team.name }}</h3>
+      <div class="hint">
+        {{ team.members.length }}
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <p>{{ team.department }}</p>
+  </div>
+</a>
